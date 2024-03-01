@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fcfcfc;
+}
+
+.grasp_icon {
+    width: 50px;
+    height: 50px;
+}
+
+.grasp_icon_centered {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+}
+
+.grasp_footer {
+    width: 95px;
+    height: 30px;
+}
+
+.grasp_home {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 82px;
+}
+
+.home_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.search_bar {
+    border-radius: 100px;
+    position: fixed;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #E8E3D3;
+    padding: 20px;
+    width: 600px;
+    height: 40px;
+}
+
+.grasp_footer_centered {
+    width: 110px;
+    height: 40px;
+    text-align: center;
+}
+
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.navbar {
+    height: 70px;
+    background-color: #FFFFFF;
+    position: relative;
+}
+
+.footer {
+    height: 70px;
+    background-color: #FFFFFF;
+    position: fixed;
+    /* Change from relative to fixed */
+    bottom: 0;
+    /* Position at the bottom */
+    width: 100%;
+    /* Take up the full width of the viewport */
+    z-index: 1000;
+    /* Ensure it appears above other content */
+}
+
+.nav-elements ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+
+.nav-elements ul li:not(:last-child) {
+    margin-right: 60px;
+}
+
+.nav-elements ul a {
+    font-size: 16px;
+    font-weight: 400;
+    color: #2f234f;
+    text-decoration: none;
+}
+
+.nav-elements ul a.active {
+    color: #574c4c;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-elements ul a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #574c4c;
+}
