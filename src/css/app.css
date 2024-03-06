@@ -39,17 +39,6 @@ body {
     height: 100%;
 }
 
-.search_bar {
-    border-radius: 100px;
-    position: fixed;
-    top: 52%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #E8E3D3;
-    padding: 20px;
-    width: 600px;
-    height: 40px;
-}
 
 .grasp_footer_centered {
     width: 110px;
@@ -72,6 +61,30 @@ body {
     height: 70px;
     background-color: #FFFFFF;
     position: relative;
+}
+
+
+.searchArea {
+    background: #E8E3D3;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 52%;
+    left: 50%;
+}
+
+.searchContent {
+    padding-top: 30px;
+
+}
+
+.searchInput {
+    
+    border: none;
+
+    background: #E8E3D3;
+    padding: 15px;
+    width: 600px;
+    height: 25px;
 }
 
 .footer {
