@@ -1,0 +1,29 @@
+footer {
+  height: 4.375rem;
+  margin-top: 0.94rem;
+  position: fixed;
+  /* Change from relative to fixed */
+  bottom: 0;
+  /* Position at the bottom */
+  width: 100%;
+  /* Take up the full width of the viewport */
+}
+
+.footer_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer_logo {
+  height: 2.5rem;
+}
+
+.footer_copyright {
+  font-family: Urbanist;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  color: var(--color-text);
+}

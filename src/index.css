@@ -96,5 +96,10 @@ ul, li, a {
 }
 
 p {
-  color: var(--color-white);
+  font-family: Urbanist;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  color: var(--color-text);
 }

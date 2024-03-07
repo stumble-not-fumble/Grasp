@@ -1,10 +1,5 @@
 
 
-.grasp_footer {
-    width: 95px;
-    height: 30px;
-}
-
 .grasp_home {
     position: fixed;
     top: 40%;
@@ -47,17 +42,4 @@
     padding: 15px;
     width: 600px;
     height: 25px;
-}
-
-.footer {
-    height: 70px;
-    background-color: #FFFFFF;
-    position: fixed;
-    /* Change from relative to fixed */
-    bottom: 0;
-    /* Position at the bottom */
-    width: 100%;
-    /* Take up the full width of the viewport */
-    z-index: 1000;
-    /* Ensure it appears above other content */
 }
