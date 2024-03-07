@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 *,
 *::before,
 *::after {
@@ -51,7 +55,7 @@ h6 {
 :root {
   --color-white: #FFFFFF;
   --color-gray: #C9C9C9;
-  --color-ligt-gold: #E8E3D3;
+  --color-light-gold: #E8E3D3;
   --color-gold: #B7A57A;
   --color-purple: #4B2E83;
   --color-text: #232027;
@@ -66,24 +70,10 @@ h1 {
 }
 
 h2 {
-  font-family: "space-mono", monospace, sans-serif;
-  font-size: 2.1875rem;
-  font-weight: 700;
-  color: var(--color-blush-pink);
-  line-height: normal;
-  margin-top: 3.5rem;
-  margin-bottom: 2rem;
+
 }
 
 h3 {
-  color: var(--color-purple-blue);
-  font-family: "space-mono", monospace, sans-serif;
-  font-size: rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  margin-top: 2rem;
-  margin-bottom: 1.5rem;
 }
 
 ul, li, a {

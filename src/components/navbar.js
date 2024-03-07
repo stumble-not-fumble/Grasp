@@ -25,7 +25,7 @@ const Navbar = () => {
                             <NavLink to="/aboutus">About Us</NavLink>
                         </li>
                         <li>
-                            <img src={search_icon} alt="search" />
+                            <img className="search_icon" src={search_icon} alt="search" />
                         </li>
                     </ul>
                 </div>

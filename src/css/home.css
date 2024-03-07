@@ -1,0 +1,31 @@
+.home_grasp_logo {
+  width: 16.9375rem;
+  height: 8rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.25rem;
+}
+
+.home_content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6rem;
+}
+
+form {
+  width: 40rem;
+}
+
+input[type="search"] {
+  background: var(--color-light-gold);
+  border-radius: 1.875rem;
+}
+
+input[type="search"]::placeholder {
+  font-family: Urbanist;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  color: var(--color-gold);
+}

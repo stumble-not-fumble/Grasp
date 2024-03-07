@@ -1,5 +1,5 @@
 
-import GraspImage from '../img/grasp.png'
+import GraspImage from '../img/grasp_title.png'
 import '../css/footer.css'
 
 const Footer = () => {
