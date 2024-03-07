@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import GraspIcon from '../img/icon.png'
+import search_icon from '../img/search_icon.png'
 import "../css/navbar.css"
 
 const Navbar = () => {
@@ -22,6 +23,9 @@ const Navbar = () => {
                         </li>
                         <li>
                             <NavLink to="/aboutus">About Us</NavLink>
+                        </li>
+                        <li>
+                            <img src={search_icon} alt="search" />
                         </li>
                     </ul>
                 </div>
