@@ -1,13 +1,13 @@
 import { NavLink } from 'react-router-dom'
 import GraspIcon from '../img/icon.png'
-import '../css/app.css'
+import "../css/navbar.css"
 
 const Navbar = () => {
     return (
-        <nav className="navbar">
-            <div className="container">
+        <nav>
+            <div className="navbar_container">
                 <div className="grasp_icon_centered">
-                    <img className="grasp_icon" src={GraspIcon} alt={"graspicon"} />
+                    <img className="grasp_icon" src={GraspIcon} alt="grasp logo" />
                 </div>
                 <div className="nav-elements">
                     <ul>

@@ -1,13 +1,100 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* Base styles */
+:root {
+  --color-white: #FFFFFF;
+  --color-gray: #C9C9C9;
+  --color-ligt-gold: #E8E3D3;
+  --color-gold: #B7A57A;
+  --color-purple: #4B2E83;
+  --color-text: #232027;
+}
+
+nav, footer {
+  padding-left: 7.84rem;
+  padding-right: 6.25rem;
+}
+
+h1 {
+}
+
+h2 {
+  font-family: "space-mono", monospace, sans-serif;
+  font-size: 2.1875rem;
+  font-weight: 700;
+  color: var(--color-blush-pink);
+  line-height: normal;
+  margin-top: 3.5rem;
+  margin-bottom: 2rem;
+}
+
+h3 {
+  color: var(--color-purple-blue);
+  font-family: "space-mono", monospace, sans-serif;
+  font-size: 1.5625rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+ul, li, a {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--color-text);
+}
+
+p {
+  color: var(--color-white);
 }
