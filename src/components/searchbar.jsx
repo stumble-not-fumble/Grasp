@@ -1,52 +1,51 @@
 import { useState } from "react";
 import search_icon from "../img/search_icon.png";
-
-const courses = [
-  {
-    name: "Database Design",
-    course_number: "INFO 330",
-  },
-  {
-    name: "Client side Development",
-    course_number: "INFO 340",
-  },
-  {
-    name: "Design Method",
-    course_number: "INFO 360",
-  },
-  {
-    name: "Introduction to Data Science",
-    course_number: "INFO 370",
-  },
-  {
-    name: "Information Architecture",
-    course_number: "INFO 380",
-  },
-];
+import { useDebouncedEffect } from "../utils/debounce";
+import { toTitleCase } from "../utils/strings";
 
 const Searchbar = () => {
   const [searchItem, setSearchItem] = useState("");
-  const [filteredCourses, setFilteredCourses] = useState(courses);
+  const [filteredCourses, setFilteredCourses] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleInputChange = (e) => {
     const searchTerm = e.target.value;
     setSearchItem(searchTerm);
-
-    const filteredItems = courses.filter((course) =>
-      `${course.course_number} ${course.name}`
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase())
-    );
-
-    setFilteredCourses(filteredItems);
     setShowDropdown(true);
   };
 
   const handleDropdownClick = (course) => {
-    setSearchItem(`${course.course_number} ${course.name}`);
+    setSearchItem(
+      `${course.course_major.toUpperCase()} ${course.course_number} ${toTitleCase(course.course_title)}`
+    );
     setShowDropdown(false);
   };
+
+  useDebouncedEffect(
+    () => {
+      if (searchItem === "") {
+        setFilteredCourses([]);
+        setShowDropdown(false);
+        return;
+      }
+
+      fetch(`https://grasp-api.fly.dev/search/${searchItem}`)
+        .then((response) => {
+          if (response.ok) {
+            response.json().then((data) => {
+              setFilteredCourses(
+                data.sort((a, b) => a.course_number - b.course_number)
+              );
+            });
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching data: ", error);
+        });
+    },
+    [searchItem],
+    175
+  );
 
   return (
     <form className="mx-auto">
@@ -76,7 +75,7 @@ const Searchbar = () => {
                 className="px-4 py-2 cursor-pointer hover:bg-gray-100"
                 onClick={() => handleDropdownClick(course)}
               >
-                {`${course.course_number} ${course.name}`}
+                {`${course.course_major.toUpperCase()} ${course.course_number} ${toTitleCase(course.course_title)}`}
               </li>
             ))}
           </ul>
