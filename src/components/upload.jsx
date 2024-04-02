@@ -1,7 +1,5 @@
 const Upload = () => {
-    return (
-        <></>
-    )
-}
+  return <></>;
+};
 
-export default Upload
+export default Upload;

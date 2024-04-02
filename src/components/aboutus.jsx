@@ -1,7 +1,5 @@
 const AboutUs = () => {
-    return (
-        <></>
-    )
-}
+  return <></>;
+};
 
-export default AboutUs
+export default AboutUs;

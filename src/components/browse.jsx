@@ -1,7 +1,5 @@
 const Browse = () => {
-    return (
-        <>  </>
-    )
-}
+  return <> </>;
+};
 
-export default Browse
+export default Browse;
