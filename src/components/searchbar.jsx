@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import search_icon from "../img/search_icon.png";
 
 const courses = [
