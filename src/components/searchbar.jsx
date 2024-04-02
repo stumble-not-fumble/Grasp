@@ -1,6 +1,7 @@
 import { useState } from "react";
 import search_icon from "../img/search_icon.png";
 import { useDebouncedEffect } from "../utils/debounce";
+import { toTitleCase } from "../utils/strings";
 
 const Searchbar = () => {
   const [searchItem, setSearchItem] = useState("");
@@ -15,7 +16,7 @@ const Searchbar = () => {
 
   const handleDropdownClick = (course) => {
     setSearchItem(
-      `${course.course_major.toUpperCase()} ${course.course_number} ${course.course_title}`
+      `${course.course_major.toUpperCase()} ${course.course_number} ${toTitleCase(course.course_title)}`
     );
     setShowDropdown(false);
   };
@@ -32,7 +33,9 @@ const Searchbar = () => {
         .then((response) => {
           if (response.ok) {
             response.json().then((data) => {
-              setFilteredCourses(data);
+              setFilteredCourses(
+                data.sort((a, b) => a.course_number - b.course_number)
+              );
             });
           }
         })
@@ -72,7 +75,7 @@ const Searchbar = () => {
                 className="px-4 py-2 cursor-pointer hover:bg-gray-100"
                 onClick={() => handleDropdownClick(course)}
               >
-                {`${course.course_major.toUpperCase()} ${course.course_number} ${course.course_title}`}
+                {`${course.course_major.toUpperCase()} ${course.course_number} ${toTitleCase(course.course_title)}`}
               </li>
             ))}
           </ul>
