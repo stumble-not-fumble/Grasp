@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import search_icon from "../img/search_icon.png";
+import { useDebouncedEffect } from "../utils/debounce";
 
 const Searchbar = () => {
   const [searchItem, setSearchItem] = useState("");
@@ -14,30 +15,34 @@ const Searchbar = () => {
 
   const handleDropdownClick = (course) => {
     setSearchItem(
-      `${course.course_major} ${course.course_number} ${course.course_title}`
+      `${course.course_major.toUpperCase()} ${course.course_number} ${course.course_title}`
     );
     setShowDropdown(false);
   };
 
-  useEffect(() => {
-    if (searchItem === "") {
-      setFilteredCourses([]);
-      setShowDropdown(false);
-      return;
-    }
+  useDebouncedEffect(
+    () => {
+      if (searchItem === "") {
+        setFilteredCourses([]);
+        setShowDropdown(false);
+        return;
+      }
 
-    fetch(`https://grasp-api.fly.dev/search/${searchItem}`)
-      .then((response) => {
-        if (response.ok) {
-          response.json().then((data) => {
-            setFilteredCourses(data);
-          });
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching data: ", error);
-      });
-  }, [searchItem]);
+      fetch(`https://grasp-api.fly.dev/search/${searchItem}`)
+        .then((response) => {
+          if (response.ok) {
+            response.json().then((data) => {
+              setFilteredCourses(data);
+            });
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching data: ", error);
+        });
+    },
+    [searchItem],
+    175
+  );
 
   return (
     <form className="mx-auto">
@@ -67,7 +72,7 @@ const Searchbar = () => {
                 className="px-4 py-2 cursor-pointer hover:bg-gray-100"
                 onClick={() => handleDropdownClick(course)}
               >
-                {`${course.course_major} ${course.course_number} ${course.course_title}`}
+                {`${course.course_major.toUpperCase()} ${course.course_number} ${course.course_title}`}
               </li>
             ))}
           </ul>
