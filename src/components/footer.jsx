@@ -1,4 +1,3 @@
-
 import GraspImage from '../img/grasp_title.png'
 import '../css/footer.css'
 
