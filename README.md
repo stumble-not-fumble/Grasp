@@ -36,7 +36,7 @@ Running Grasp
 <p> 1. Clone the respository & install dependencies </p>
 
 ```bash
-git clone https://github.com/SamLovesCoding2/grasp.git && npm install
+git clone https://github.com/SamLovesCoding2/grasp.git && npm run dev
 ```
 
 <p> 2. Run Grasp in the development mode. </p>
