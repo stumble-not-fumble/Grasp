@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import GraspImage from "../img/grasp_title.png";
 import "../css/footer.css";
 
@@ -6,7 +7,9 @@ const Footer = () => {
     <footer>
       <div className="footer_container">
         <div className="centered">
-          <img className="footer_logo" src={GraspImage} alt={"graspicon"} />
+          <NavLink to="/">
+            <img className="footer_logo" src={GraspImage} alt={"graspicon"} />
+          </NavLink>
         </div>
         <div className="footer_copyright">
           <p>
