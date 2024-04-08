@@ -9,6 +9,10 @@ footer {
   /* Take up the full width of the viewport */
 }
 
+footer p {
+  font-size: 0.75rem;
+}
+
 .footer_container {
   display: flex;
   justify-content: space-between;
