@@ -1,0 +1,24 @@
+.about_us_content {
+    font-family: Urbanist;
+    font-style: normal;
+  }
+  
+.heading {
+  font-size: 5rem; 
+  text-align: left;
+  margin-left: 0rem;
+  position: relative; 
+  font-weight: 600;
+} 
+
+.heading::after {
+  content: ''; 
+  display: block; 
+  width: 65%; 
+  height: .5rem; 
+  background-color: #B7A57A; 
+  position: absolute;
+  left: 0rem;
+  right: 0;
+  bottom: 0rem; 
+}
