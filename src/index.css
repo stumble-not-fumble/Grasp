@@ -61,12 +61,26 @@ h6 {
   --color-text: #232027;
 }
 
+main {
+  padding-left: 7.84rem;
+  padding-right: 6.25rem;
+}
+
 nav, footer {
   padding-left: 7.84rem;
   padding-right: 6.25rem;
 }
 
 h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 3.125rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--color-text);
+  text-transform: uppercase;
+  text-decoration: underline var(--color-gold);
+  text-underline-offset: 0.5rem;
 }
 
 h2 {
@@ -87,7 +101,7 @@ ul, li, a {
 
 p {
   font-family: Urbanist;
-  font-size: 0.75rem;
+  font-size: 0.9375rem;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
