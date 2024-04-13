@@ -1,6 +1,29 @@
+import { useState } from "react";
+import { Viewer } from "@react-pdf-viewer/core";
+import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
+import "@react-pdf-viewer/core/lib/styles/index.css";
+import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import "../css/upload.css";
+import { Worker } from "@react-pdf-viewer/core";
 
 const Upload = () => {
+  const defaultLayoutPluginInstance = defaultLayoutPlugin();
+
+  const [viewPdf, setViewPdf] = useState(null);
+
+  const handlePdfFileChange = (e) => {
+    let selectedFile = e.target.files[0];
+    if (selectedFile && selectedFile.type === "application/pdf") {
+      let reader = new FileReader();
+      reader.readAsDataURL(selectedFile);
+      reader.onloadend = (e) => {
+        setViewPdf(e.target.result);
+      };
+    } else {
+      setViewPdf(null);
+    }
+  };
+
   return (
     <main>
       <h1>Upload Syllabus</h1>
@@ -135,8 +158,25 @@ const Upload = () => {
           id="file_upload"
           name="file_name"
           accept=".pdf"
+          required
+          onChange={handlePdfFileChange}
         ></input>
       </form>
+      <div className="container">
+        {viewPdf && (
+          <>
+            <p>View PDF</p>
+            <div className="pdf-container">
+              <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
+                <Viewer
+                  fileUrl={viewPdf}
+                  plugins={[defaultLayoutPluginInstance]}
+                />
+              </Worker>
+            </div>
+          </>
+        )}
+      </div>
     </main>
   );
 };

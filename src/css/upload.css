@@ -8,6 +8,7 @@
   width: 30.25rem;
   height: 2.5625rem;
   margin-right: 9.12rem;
+  margin-bottom: 2rem;
 }
 
 #course_code,#year_offered {
@@ -17,16 +18,17 @@
 
 #course_code {
   margin-right: 1.25rem;
+  margin-bottom: 2rem;
 }
 
 #year_offered {
   margin-right: 9.12rem;
 }
 
-span input {
+/* span input {
   margin-top: 0.44rem;
   margin-bottom: 2rem;
-}
+} */
 
 span::before,
 ::placeholder {
@@ -77,4 +79,13 @@ input::file-selector-button {
 
 .file_upload p {
   margin-bottom: 0.63rem;
+}
+
+.file_upload {
+  margin-bottom: 2rem;
+}
+
+.container p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
