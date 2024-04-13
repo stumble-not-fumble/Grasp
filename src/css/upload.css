@@ -46,3 +46,35 @@ span::before,
 .upload_form div {
   display: flex;
 }
+
+/* File Upload Form */
+.file_upload {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.file_upload label {
+  margin-bottom: 1.5rem;
+}
+
+input::file-selector-button {
+  background-color: var(--color-light-gold);
+  border-radius: 1.25rem;
+  border: 1px dashed var(--color-purple);
+}
+
+.file_upload a{
+  font-family: Urbanist;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  color: var(--color-purple);
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
+.file_upload p {
+  margin-bottom: 0.63rem;
+}

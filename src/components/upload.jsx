@@ -119,6 +119,24 @@ const Upload = () => {
           </ul>
         </label>
       </form>
+      <form className="file_upload">
+        <label htmlFor="file_upload">Syllabus*</label>
+        <p>
+          Help us out by uploading a syllabus! Print a PDF copy of your syllabus
+          on canvas and upload it to this page.
+          <a href="https://www.consumerfinance.gov/consumer-tools/save-as-pdf-instructions/">
+            Here are instructions to print a web page to pdf.
+          </a>
+          If your class doesn’t have a syllabus on canvas fill out this form
+          here.
+        </p>
+        <input
+          type="file"
+          id="file_upload"
+          name="file_name"
+          accept=".pdf"
+        ></input>
+      </form>
     </main>
   );
 };
