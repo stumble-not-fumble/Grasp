@@ -1,0 +1,48 @@
+.upload_form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#professor, #course_name {
+  width: 30.25rem;
+  height: 2.5625rem;
+  margin-right: 9.12rem;
+}
+
+#course_code,#year_offered {
+  width: 14.5rem;
+  height: 2.5625rem;
+}
+
+#course_code {
+  margin-right: 1.25rem;
+}
+
+#year_offered {
+  margin-right: 9.12rem;
+}
+
+span input {
+  margin-top: 0.44rem;
+  margin-bottom: 2rem;
+}
+
+span::before,
+::placeholder {
+  padding-left: 0.5rem;
+}
+
+.upload_form input {
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-gray);
+}
+
+.upload_form label {
+  display: flex;
+  flex-direction: column;
+}
+
+.upload_form div {
+  display: flex;
+}
