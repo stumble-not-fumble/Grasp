@@ -1,14 +1,7 @@
 import { useState } from "react";
-import { Viewer } from "@react-pdf-viewer/core";
-import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
-import "@react-pdf-viewer/core/lib/styles/index.css";
-import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import "../css/upload.css";
-import { Worker } from "@react-pdf-viewer/core";
 
 const Upload = () => {
-  const defaultLayoutPluginInstance = defaultLayoutPlugin();
-
   const [viewPdf, setViewPdf] = useState(null);
 
   const handlePdfFileChange = (e) => {
@@ -167,12 +160,13 @@ const Upload = () => {
           <>
             <p>View PDF</p>
             <div className="pdf-container">
-              <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
-                <Viewer
-                  fileUrl={viewPdf}
-                  plugins={[defaultLayoutPluginInstance]}
-                />
-              </Worker>
+              <object
+                data={viewPdf}
+                type="application/pdf"
+                aria-label="Your uploaded syllabus"
+              >
+                <p>Your browser doesn&apos;t have a PDF plugin to display </p>
+              </object>
             </div>
           </>
         )}
