@@ -73,7 +73,7 @@ const Upload = () => {
                 <input
                   id="autumn-checkbox-list"
                   type="checkbox"
-                  value=""
+                  value="AUT"
                   className="w-8 h-8 rounded focus:ring-2"
                 />
                 <label
@@ -89,7 +89,7 @@ const Upload = () => {
                 <input
                   id="winter-checkbox-list"
                   type="checkbox"
-                  value=""
+                  value="WTR"
                   className="w-8 h-8 rounded focus:ring-2"
                 />
                 <label
@@ -105,7 +105,7 @@ const Upload = () => {
                 <input
                   id="spring-checkbox-list"
                   type="checkbox"
-                  value=""
+                  value="SPR"
                   className="w-8 h-8 rounded focus:ring-2"
                 />
                 <label
@@ -121,7 +121,7 @@ const Upload = () => {
                 <input
                   id="summer-checkbox-list"
                   type="checkbox"
-                  value=""
+                  value="SUM"
                   className="w-8 h-8 rounded focus:ring-2"
                 />
                 <label
