@@ -3,6 +3,7 @@ import "../css/upload.css";
 
 const Upload = () => {
   const [viewPdf, setViewPdf] = useState(null);
+  const [pdfObject, setPdfObject] = useState(null);
 
   const handlePdfFileChange = (e) => {
     let selectedFile = e.target.files[0];
@@ -12,9 +13,47 @@ const Upload = () => {
       reader.onloadend = (e) => {
         setViewPdf(e.target.result);
       };
+      setPdfObject(selectedFile);
     } else {
       setViewPdf(null);
     }
+  };
+
+  const handleSubmit = async () => {
+    if (viewPdf === null) {
+      alert("Please upload a valid PDF file");
+      return;
+    }
+    const formData = new FormData();
+    const [course_major, course_number] = document
+      .getElementById("course_code")
+      .value.split(" ");
+
+    formData.append("professor", document.getElementById("professor").value);
+    formData.append(
+      "course_title",
+      document.getElementById("course_name").value
+    );
+    formData.append("course_major", course_major);
+    formData.append("course_number", course_number);
+    formData.append("year", document.getElementById("year_offered").value);
+    for (const checkbox of document.querySelectorAll(
+      "input[type='checkbox']"
+    )) {
+      if (checkbox.checked) {
+        formData.append("quarter", checkbox.value);
+      }
+    }
+    formData.append("pdf", pdfObject);
+
+    formData.forEach((value, key) => {
+      console.log(key, value);
+    });
+    const response = await fetch("http://grasp-api.fly.dev/upload", {
+      method: "POST",
+      body: formData,
+    });
+    console.log(await response.text());
   };
 
   return (
@@ -168,6 +207,13 @@ const Upload = () => {
                 <p>Your browser doesn&apos;t have a PDF plugin to display </p>
               </object>
             </div>
+            <button
+              type="submit"
+              className="submit_button"
+              onClick={handleSubmit}
+            >
+              Upload
+            </button>
           </>
         )}
       </div>
