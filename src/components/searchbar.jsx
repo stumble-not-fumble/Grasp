@@ -2,12 +2,13 @@ import { useState } from "react";
 import search_icon from "../img/search_icon.png";
 import { useDebouncedEffect } from "../utils/debounce";
 import { toTitleCase } from "../utils/strings";
+import { useNavigate } from "react-router-dom";
 
 const Searchbar = () => {
   const [searchItem, setSearchItem] = useState("");
   const [filteredCourses, setFilteredCourses] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
-
+  const navigate = useNavigate();
   const handleInputChange = (e) => {
     const searchTerm = e.target.value;
     setSearchItem(searchTerm);
@@ -19,6 +20,8 @@ const Searchbar = () => {
       `${course.course_major.toUpperCase()} ${course.course_number} ${toTitleCase(course.course_title)}`
     );
     setShowDropdown(false);
+
+    navigate("/course-page", { state: { course } });
   };
 
   useDebouncedEffect(
