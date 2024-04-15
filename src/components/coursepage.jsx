@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import PageHeader from "./pageheader";
+import Dropdown from "./dropdown";
 import "../css/course.css";
 import { useState } from "react";
 
@@ -16,6 +17,14 @@ const CoursePage = () => {
     Winter: false,
   });
 
+  const options = [
+    { value: "2018", label: "2018" },
+    { value: "2019", label: "2019" },
+    { value: "2020", label: "2020" },
+    { value: "2021", label: "2021" },
+    { value: "2022", label: "2022" },
+  ];
+
   const toggleQuarter = () => setIsQuarterOpen(!isQuarterOpen);
   const toggleYear = () => setIsYearOpen(!isYearOpen);
   const toggleProfessor = () => setIsProfessorOpen(!isProfessorOpen);
@@ -28,7 +37,8 @@ const CoursePage = () => {
       <div className="course-content">
         <div className="left-column">
           <p>
-            Select a quarter, year, and professor to view the course's syllabus.
+            Select a quarter, year, and professor to view the course&apos;s
+            syllabus.
             <br />
             <br />
           </p>
