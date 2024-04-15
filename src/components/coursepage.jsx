@@ -17,6 +17,10 @@ const CoursePage = () => {
     Winter: false,
   });
 
+  const [selectedYear, setSelectedYear] = useState();
+  const handleYearChange = (selectedYear) => {
+    setSelectedYear(selectedYear);
+  };
   const options = [
     { value: "2018", label: "2018" },
     { value: "2019", label: "2019" },
