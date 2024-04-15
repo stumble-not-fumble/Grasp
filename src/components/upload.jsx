@@ -4,6 +4,12 @@ import "../css/upload.css";
 const Upload = () => {
   const [viewPdf, setViewPdf] = useState(null);
   const [pdfObject, setPdfObject] = useState(null);
+  const [professor, setProfessor] = useState("");
+  const [courseName, setCourseName] = useState("");
+  const [courseCode, setCourseCode] = useState("");
+  const [yearOffered, setYearOffered] = useState("");
+  const [quarter, setQuarter] = useState("");
+  const [fileName, setFileName] = useState("");
 
   const handlePdfFileChange = (e) => {
     let selectedFile = e.target.files[0];
@@ -14,8 +20,10 @@ const Upload = () => {
         setViewPdf(e.target.result);
       };
       setPdfObject(selectedFile);
+      setFileName(selectedFile.name);
     } else {
       setViewPdf(null);
+      setFileName("");
     }
   };
 
@@ -38,7 +46,7 @@ const Upload = () => {
     formData.append("course_number", course_number);
     formData.append("year", document.getElementById("year_offered").value);
     for (const checkbox of document.querySelectorAll(
-      "input[type='checkbox']"
+      "input[type='radio']"
     )) {
       if (checkbox.checked) {
         formData.append("quarter", checkbox.value);
@@ -54,18 +62,34 @@ const Upload = () => {
       body: formData,
     });
     console.log(await response.text());
+
+    //Clear the form
+    setProfessor("");
+    setCourseName("");
+    setCourseCode("");
+    setYearOffered("");
+    setQuarter("");
+    setFileName("");
+    setViewPdf(null);
+    setPdfObject(null);
   };
 
   return (
     <main>
       <h1>Upload Syllabus</h1>
-      <form className="upload_form" aria-label="Course syllabus upload form">
+      <form
+        className="upload_form"
+        aria-label="Course syllabus upload form"
+        onSubmit={(e) => e.preventDefault()}
+      >
         <label htmlFor="Professor First and Last Name">
           Professor&apos;s First and Last Name*
           <input
             type="text"
             id="professor"
             placeholder="First and Last Name"
+            value={professor}
+            onChange={(e) => setProfessor(e.target.value)}
             required
           />
         </label>
@@ -75,6 +99,8 @@ const Upload = () => {
             type="text"
             id="course_name"
             placeholder="E.g. Client-Side Web Development"
+            value={courseName}
+            onChange={(e) => setCourseName(e.target.value)}
             required
           />
         </label>
@@ -84,6 +110,8 @@ const Upload = () => {
             type="text"
             id="course_code"
             placeholder="E.g. INFO 340"
+            value={courseCode}
+            onChange={(e) => setCourseCode(e.target.value)}
             required
           />
         </label>
@@ -93,6 +121,8 @@ const Upload = () => {
             type="text"
             id="year_offered"
             placeholder="E.g. 2024"
+            value={yearOffered}
+            onChange={(e) => setYearOffered(e.target.value)}
             required
           />
         </label>
@@ -106,6 +136,8 @@ const Upload = () => {
                   type="radio"
                   name="quarter"
                   value="AUT"
+                  checked={quarter === "AUT"}
+                  onChange={() => setQuarter("AUT")}
                   className="w-8 h-8 rounded focus:ring-2"
                 />
                 <label
@@ -123,6 +155,8 @@ const Upload = () => {
                   type="radio"
                   name="quarter"
                   value="WTR"
+                  checked={quarter === "WTR"}
+                  onChange={() => setQuarter("WTR")}
                   className="w-8 h-8 rounded focus:ring-2"
                 />
                 <label
@@ -140,6 +174,8 @@ const Upload = () => {
                   type="radio"
                   name="quarter"
                   value="SPR"
+                  checked={quarter === "SPR "}
+                  onChange={() => setQuarter("SPR")}
                   className="w-8 h-8 rounded focus:ring-2"
                 />
                 <label
@@ -157,6 +193,8 @@ const Upload = () => {
                   type="radio"
                   name="quarter"
                   value="SUM"
+                  checked={quarter === "SUM"}
+                  onChange={() => setQuarter("SUM")}
                   className="w-8 h-8 rounded focus:ring-2"
                 />
                 <label
@@ -186,8 +224,8 @@ const Upload = () => {
           id="file_upload"
           name="file_name"
           accept=".pdf"
-          required
           onChange={handlePdfFileChange}
+          required
         ></input>
       </form>
       <div className="container">
@@ -204,8 +242,6 @@ const Upload = () => {
               </object>
             </div>
             <div className="submit_button_container">
-              {/* Have a message that appear users need to fill out all the information before submitting the form */}
-              {/* Clear the page when the user click upload */}
               <button
                 type="submit"
                 className="submit_button"
