@@ -45,9 +45,7 @@ const Upload = () => {
     formData.append("course_major", course_major);
     formData.append("course_number", course_number);
     formData.append("year", document.getElementById("year_offered").value);
-    for (const checkbox of document.querySelectorAll(
-      "input[type='radio']"
-    )) {
+    for (const checkbox of document.querySelectorAll("input[type='radio']")) {
       if (checkbox.checked) {
         formData.append("quarter", checkbox.value);
       }
