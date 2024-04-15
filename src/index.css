@@ -105,8 +105,8 @@ ul, li, a {
   color: var(--color-text);
 }
 
-p {
-  font-family: Urbanist;
+p, label {
+  font-family: Urbanist, sans-serif;
   font-size: 0.9375rem;
   font-style: normal;
   font-weight: 300;

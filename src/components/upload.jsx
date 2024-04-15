@@ -62,62 +62,55 @@ const Upload = () => {
       <form className="upload_form" aria-label="Course syllabus upload form">
         <label htmlFor="Professor First and Last Name">
           Professor&apos;s First and Last Name*
-          <span>
-            <input
-              type="text"
-              id="professor"
-              placeholder="First and Last Name"
-              required
-            />
-          </span>
+          <input
+            type="text"
+            id="professor"
+            placeholder="First and Last Name"
+            required
+          />
         </label>
         <label htmlFor="Course Name">
           Course Name*
-          <span>
-            <input
-              type="text"
-              id="course_name"
-              placeholder="E.g. Client-Side Web Development"
-              required
-            />
-          </span>
+          <input
+            type="text"
+            id="course_name"
+            placeholder="E.g. Client-Side Web Development"
+            required
+          />
         </label>
         <label htmlFor="Course Code">
           Course Code*
-          <span>
-            <input
-              type="text"
-              id="course_code"
-              placeholder="E.g. INFO 340"
-              required
-            />
-          </span>
+          <input
+            type="text"
+            id="course_code"
+            placeholder="E.g. INFO 340"
+            required
+          />
         </label>
         <label htmlFor="Year Offered">
           Year Offered*
-          <span>
-            <input
-              type="text"
-              id="year_offered"
-              placeholder="E.g. 2024"
-              required
-            />
-          </span>
+          <input
+            type="text"
+            id="year_offered"
+            placeholder="E.g. 2024"
+            required
+          />
         </label>
         <label htmlFor="Quarter Offered">
           Quarter Offered*
           <ul className="items-center w-full rounded-lg sm:flex">
             <li>
-              <div className="flex items-center ps-3">
+              <div className="flex items-center">
                 <input
                   id="autumn-checkbox-list"
-                  type="checkbox"
+                  type="radio"
+                  name="quarter"
                   value="AUT"
                   className="w-8 h-8 rounded focus:ring-2"
                 />
                 <label
                   htmlFor="autumn-checkbox-list"
-                  className="w-full py-3 ms-2 text-xl"
+                  className="w-full py-3 ms-2 text-lg"
                 >
                   Autumn
                 </label>
@@ -127,13 +120,14 @@ const Upload = () => {
               <div className="flex items-center ps-3">
                 <input
                   id="winter-checkbox-list"
-                  type="checkbox"
+                  type="radio"
+                  name="quarter"
                   value="WTR"
                   className="w-8 h-8 rounded focus:ring-2"
                 />
                 <label
                   htmlFor="winter-checkbox-list"
-                  className="w-full py-3 ms-2 text-xl"
+                  className="w-full py-3 ms-2 text-lg"
                 >
                   Winter
                 </label>
@@ -143,13 +137,14 @@ const Upload = () => {
               <div className="flex items-center ps-3">
                 <input
                   id="spring-checkbox-list"
-                  type="checkbox"
+                  type="radio"
+                  name="quarter"
                   value="SPR"
                   className="w-8 h-8 rounded focus:ring-2"
                 />
                 <label
                   htmlFor="spring-checkbox-list"
-                  className="w-full py-3 ms-2 text-xl"
+                  className="w-full py-3 ms-2 text-lg"
                 >
                   Spring
                 </label>
@@ -159,13 +154,14 @@ const Upload = () => {
               <div className="flex items-center ps-3">
                 <input
                   id="summer-checkbox-list"
-                  type="checkbox"
+                  type="radio"
+                  name="quarter"
                   value="SUM"
                   className="w-8 h-8 rounded focus:ring-2"
                 />
                 <label
                   htmlFor="summer-checkbox-list"
-                  className="w-full py-3 ms-2 text-xl"
+                  className="w-full py-3 ms-2 text-lg"
                 >
                   Summer
                 </label>
@@ -207,13 +203,17 @@ const Upload = () => {
                 <p>Your browser doesn&apos;t have a PDF plugin to display </p>
               </object>
             </div>
-            <button
-              type="submit"
-              className="submit_button"
-              onClick={handleSubmit}
-            >
-              Upload
-            </button>
+            <div className="submit_button_container">
+              {/* Have a message that appear users need to fill out all the information before submitting the form */}
+              {/* Clear the page when the user click upload */}
+              <button
+                type="submit"
+                className="submit_button"
+                onClick={handleSubmit}
+              >
+                Upload
+              </button>
+            </div>
           </>
         )}
       </div>
