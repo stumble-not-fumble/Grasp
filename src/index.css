@@ -52,6 +52,11 @@ h6 {
 #root,
 #__next {
   isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: auto;
+  scrollbar-gutter: stable;
 }
 
 /* Base styles */
@@ -66,35 +71,54 @@ h6 {
 
 nav,
 footer {
-  padding-left: 7.84rem;
-  padding-right: 6.25rem;
-}
+  main {
+    padding-left: 7.84rem;
+    padding-right: 6.25rem;
+  }
 
-h1 {
-}
+  nav,
+  footer {
+    padding-left: 7.84rem;
+    padding-right: 6.25rem;
+  }
 
-h2 {
-}
+  h1 {
+    font-family: "Poppins", sans-serif;
+    font-size: 3.125rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: var(--color-text);
+    text-transform: uppercase;
+    text-decoration: underline var(--color-gold);
+    text-underline-offset: 0.5rem;
+    margin-bottom: 2rem;
+  }
 
-h3 {
-}
+  h2 {
+  }
 
-ul,
-li,
-a {
-  font-family: "Poppins", sans-serif;
-  font-size: 0.97rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  color: var(--color-text);
-}
+  h3 {
+  }
 
-p {
-  font-family: Urbanist;
-  font-size: 0.75rem;
-  font-style: normal;
-  font-weight: 300;
-  line-height: normal;
-  color: var(--color-text);
+  ul,
+  li,
+  a {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.97rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text);
+  }
+
+  p,
+  label {
+    font-family: Urbanist, sans-serif;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    color: var(--color-text);
+  }
 }

@@ -15,20 +15,17 @@ const Navbar = () => {
         <div className="nav-elements">
           <ul>
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/browse">Browse Courses</NavLink>
             </li>
             <li>
-              <NavLink to="/upload">Upload</NavLink>
-            </li>
-            <li>
-              <NavLink to="/browse">Browse</NavLink>
+              <NavLink to="/upload">Upload Syllabus</NavLink>
             </li>
             <li>
               <NavLink to="/aboutus">About Us</NavLink>
             </li>
-            <li>
+            {/* <li>
               <img className="search_icon" src={search_icon} alt="search" />
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
