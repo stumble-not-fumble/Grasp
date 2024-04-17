@@ -39,6 +39,9 @@
   display: flex;
 }
 
+.quarters_offered {
+  flex-direction: column;
+}
 /* File Upload Form */
 .file_upload {
   display: flex;

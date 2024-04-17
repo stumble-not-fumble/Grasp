@@ -148,8 +148,8 @@ const Upload = () => {
             required
           />
         </label>
-        <label htmlFor="quarters_offered">
-          Quarter Offered*
+        <div className="quarters_offered">
+          <p>Quarter Offered*</p>
           <ul className="items-center w-full rounded-lg sm:flex">
             <li>
               <div className="flex items-center">
@@ -232,7 +232,7 @@ const Upload = () => {
               </div>
             </li>
           </ul>
-        </label>
+        </div>
         <div className="file_upload">
           <label htmlFor="file_upload">Syllabus*</label>
           <p>
