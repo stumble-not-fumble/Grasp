@@ -82,18 +82,23 @@ const Upload = () => {
       method: "POST",
       body: formData,
     });
-    console.log(await response.text());
 
-    //Clear the form
-    setProfessor("");
-    setCourseName("");
-    setCourseCode("");
-    setYearOffered("");
-    setQuarter("");
-    setFileName("");
-    setViewPdf(null);
-    setPdfObject(null);
-    document.getElementById("file_upload").value = "";
+    if (response.ok) {
+      const data = await response.text();
+      alert(data);
+
+      setProfessor("");
+      setCourseName("");
+      setCourseCode("");
+      setYearOffered("");
+      setQuarter("");
+      setFileName("");
+      setViewPdf(null);
+      setPdfObject(null);
+      document.getElementById("file_upload").value = "";
+    } else {
+      alert("Failed to upload syllabus");
+    }
   };
 
   return (
