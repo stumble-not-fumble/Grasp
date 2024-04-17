@@ -145,7 +145,7 @@ const Upload = () => {
         <label htmlFor="year_offered">
           Year Offered*
           <input
-            type="text"
+            type="number"
             id="year_offered"
             placeholder="E.g. 2024"
             value={yearOffered}
