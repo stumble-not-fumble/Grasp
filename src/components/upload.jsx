@@ -93,6 +93,7 @@ const Upload = () => {
     setFileName("");
     setViewPdf(null);
     setPdfObject(null);
+    document.getElementById("file_upload").value = "";
   };
 
   return (
