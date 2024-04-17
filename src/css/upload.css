@@ -25,7 +25,7 @@
   margin-right: 9.12rem;
 }
 
-.upload_form input {
+.upload_form label input {
   border-radius: 0.25rem;
   border: 1px solid var(--color-gray);
 }
@@ -77,6 +77,10 @@ input::file-selector-button {
 
 .file_upload {
   margin-bottom: 2rem;
+}
+
+.container {
+ flex-direction: column; 
 }
 
 .container p {

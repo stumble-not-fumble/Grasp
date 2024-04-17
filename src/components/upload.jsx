@@ -32,6 +32,12 @@ const Upload = () => {
       alert("Please upload a valid PDF file");
       return;
     }
+    for (const input of document.querySelectorAll("input[required]")) {
+      if (!input.value) {
+        return;
+      }
+    }
+
     const formData = new FormData();
     const [course_major, course_number] = document
       .getElementById("course_code")
@@ -205,52 +211,52 @@ const Upload = () => {
             </li>
           </ul>
         </label>
+        <div className="file_upload">
+          <label htmlFor="file_upload">Syllabus*</label>
+          <p>
+            Help us out by uploading a syllabus! Print a PDF copy of your
+            syllabus on canvas and upload it to this page.&nbsp;
+            <a href="https://www.consumerfinance.gov/consumer-tools/save-as-pdf-instructions/">
+              Here are instructions to print a web page to pdf.
+            </a>
+            &nbsp;If your class doesn&apos;t have a syllabus on canvas fill out
+            this form here.
+          </p>
+          <input
+            type="file"
+            id="file_upload"
+            name="file_name"
+            accept=".pdf"
+            onChange={handlePdfFileChange}
+            required
+          ></input>
+        </div>
+        <div className="container">
+          {viewPdf && (
+            <>
+              <p>View PDF</p>
+              <div className="pdf-container">
+                <object
+                  data={viewPdf}
+                  type="application/pdf"
+                  aria-label="Your uploaded syllabus"
+                >
+                  <p>Your browser doesn&apos;t have a PDF plugin to display </p>
+                </object>
+              </div>
+              <div className="submit_button_container">
+                <button
+                  type="submit"
+                  className="submit_button"
+                  onClick={handleSubmit}
+                >
+                  Upload
+                </button>
+              </div>
+            </>
+          )}
+        </div>
       </form>
-      <form className="file_upload">
-        <label htmlFor="file_upload">Syllabus*</label>
-        <p>
-          Help us out by uploading a syllabus! Print a PDF copy of your syllabus
-          on canvas and upload it to this page.&nbsp;
-          <a href="https://www.consumerfinance.gov/consumer-tools/save-as-pdf-instructions/">
-            Here are instructions to print a web page to pdf.
-          </a>
-          &nbsp;If your class doesn&apos;t have a syllabus on canvas fill out
-          this form here.
-        </p>
-        <input
-          type="file"
-          id="file_upload"
-          name="file_name"
-          accept=".pdf"
-          onChange={handlePdfFileChange}
-          required
-        ></input>
-      </form>
-      <div className="container">
-        {viewPdf && (
-          <>
-            <p>View PDF</p>
-            <div className="pdf-container">
-              <object
-                data={viewPdf}
-                type="application/pdf"
-                aria-label="Your uploaded syllabus"
-              >
-                <p>Your browser doesn&apos;t have a PDF plugin to display </p>
-              </object>
-            </div>
-            <div className="submit_button_container">
-              <button
-                type="submit"
-                className="submit_button"
-                onClick={handleSubmit}
-              >
-                Upload
-              </button>
-            </div>
-          </>
-        )}
-      </div>
     </main>
   );
 };
