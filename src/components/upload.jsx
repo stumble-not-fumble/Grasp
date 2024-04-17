@@ -86,7 +86,7 @@ const Upload = () => {
         aria-label="Course syllabus upload form"
         onSubmit={(e) => e.preventDefault()}
       >
-        <label htmlFor="Professor First and Last Name">
+        <label htmlFor="professor">
           Professor&apos;s First and Last Name*
           <input
             type="text"
@@ -97,7 +97,7 @@ const Upload = () => {
             required
           />
         </label>
-        <label htmlFor="Course Name">
+        <label htmlFor="course_name">
           Course Name*
           <input
             type="text"
@@ -108,7 +108,7 @@ const Upload = () => {
             required
           />
         </label>
-        <label htmlFor="Course Code">
+        <label htmlFor="course_code">
           Course Code*
           <input
             type="text"
@@ -119,7 +119,7 @@ const Upload = () => {
             required
           />
         </label>
-        <label htmlFor="Year Offered">
+        <label htmlFor="year_offered">
           Year Offered*
           <input
             type="text"
@@ -130,7 +130,7 @@ const Upload = () => {
             required
           />
         </label>
-        <label htmlFor="Quarter Offered">
+        <label htmlFor="quarters_offered">
           Quarter Offered*
           <ul className="items-center w-full rounded-lg sm:flex">
             <li>
