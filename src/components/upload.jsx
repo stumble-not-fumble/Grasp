@@ -1,6 +1,25 @@
 import { useState } from "react";
 import "../css/upload.css";
 
+/**
+ * Check if all required inputs are filled
+ * @returns {boolean} true if all inputs are filled, false otherwise
+ */
+function allInputsFilled() {
+  for (const input of document.querySelectorAll("input[required]")) {
+    if (!input.value) {
+      return false;
+    }
+  }
+  for (const checkbox of document.querySelectorAll("input[type='radio']")) {
+    console.log(checkbox.checked);
+    if (checkbox.checked) {
+      return true;
+    }
+  }
+  return false;
+}
+
 const Upload = () => {
   const [viewPdf, setViewPdf] = useState(null);
   const [pdfObject, setPdfObject] = useState(null);
@@ -32,10 +51,8 @@ const Upload = () => {
       alert("Please upload a valid PDF file");
       return;
     }
-    for (const input of document.querySelectorAll("input[required]")) {
-      if (!input.value) {
-        return;
-      }
+    if (!allInputsFilled()) {
+      return;
     }
 
     const formData = new FormData();
@@ -142,6 +159,7 @@ const Upload = () => {
                   value="AUT"
                   checked={quarter === "AUT"}
                   onChange={() => setQuarter("AUT")}
+                  required
                   className="w-8 h-8 rounded focus:ring-2"
                 />
                 <label
@@ -161,6 +179,7 @@ const Upload = () => {
                   value="WTR"
                   checked={quarter === "WTR"}
                   onChange={() => setQuarter("WTR")}
+                  required
                   className="w-8 h-8 rounded focus:ring-2"
                 />
                 <label
@@ -180,6 +199,7 @@ const Upload = () => {
                   value="SPR"
                   checked={quarter === "SPR "}
                   onChange={() => setQuarter("SPR")}
+                  required
                   className="w-8 h-8 rounded focus:ring-2"
                 />
                 <label
@@ -199,6 +219,7 @@ const Upload = () => {
                   value="SUM"
                   checked={quarter === "SUM"}
                   onChange={() => setQuarter("SUM")}
+                  required
                   className="w-8 h-8 rounded focus:ring-2"
                 />
                 <label
