@@ -5,7 +5,7 @@ import { toTitleCase } from "../utils/strings";
 
 const Searchbar = () => {
   const [searchItem, setSearchItem] = useState("");
-  const [filteredCourses, setFilteredCourses] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleInputChange = (e) => {
@@ -24,7 +24,7 @@ const Searchbar = () => {
   useDebouncedEffect(
     () => {
       if (searchItem === "") {
-        setFilteredCourses([]);
+        setSearchResults([]);
         setShowDropdown(false);
         return;
       }
@@ -33,9 +33,26 @@ const Searchbar = () => {
         .then((response) => {
           if (response.ok) {
             response.json().then((data) => {
-              setFilteredCourses(
-                data.sort((a, b) => a.course_number - b.course_number)
+              setSearchResults(
+                data
+                  .sort((a, b) => a.course_number - b.course_number)
+                  .map((course, index) => (
+                    <li
+                      key={index}
+                      className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+                      onClick={() => handleDropdownClick(course)}
+                    >
+                      {`${course.course_major.toUpperCase()} ${course.course_number} ${toTitleCase(course.course_title)}`}
+                    </li>
+                  ))
               );
+              if (data.length === 0) {
+                setSearchResults([
+                  <li className="px-4 py-2" key={0}>
+                    No results found
+                  </li>,
+                ]);
+              }
             });
           }
         })
@@ -69,15 +86,7 @@ const Searchbar = () => {
         />
         {showDropdown && (
           <ul className="absolute z-10 w-full bg-white border border-gray-300 rounded-md mt-2">
-            {filteredCourses.map((course, index) => (
-              <li
-                key={index}
-                className="px-4 py-2 cursor-pointer hover:bg-gray-100"
-                onClick={() => handleDropdownClick(course)}
-              >
-                {`${course.course_major.toUpperCase()} ${course.course_number} ${toTitleCase(course.course_title)}`}
-              </li>
-            ))}
+            {searchResults}
           </ul>
         )}
       </div>
