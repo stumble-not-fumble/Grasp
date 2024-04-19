@@ -1,6 +1,25 @@
 import { useState } from "react";
 import "../css/upload.css";
 
+/**
+ * Check if all required inputs are filled
+ * @returns {boolean} true if all inputs are filled, false otherwise
+ */
+function allInputsFilled() {
+  for (const input of document.querySelectorAll("input[required]")) {
+    if (!input.value) {
+      return false;
+    }
+  }
+  for (const checkbox of document.querySelectorAll("input[type='radio']")) {
+    console.log(checkbox.checked);
+    if (checkbox.checked) {
+      return true;
+    }
+  }
+  return false;
+}
+
 const Upload = () => {
   const [viewPdf, setViewPdf] = useState(null);
   const [pdfObject, setPdfObject] = useState(null);
@@ -32,6 +51,10 @@ const Upload = () => {
       alert("Please upload a valid PDF file");
       return;
     }
+    if (!allInputsFilled()) {
+      return;
+    }
+
     const formData = new FormData();
     const [course_major, course_number] = document
       .getElementById("course_code")
@@ -59,17 +82,23 @@ const Upload = () => {
       method: "POST",
       body: formData,
     });
-    console.log(await response.text());
 
-    //Clear the form
-    setProfessor("");
-    setCourseName("");
-    setCourseCode("");
-    setYearOffered("");
-    setQuarter("");
-    setFileName("");
-    setViewPdf(null);
-    setPdfObject(null);
+    if (response.ok) {
+      const data = await response.text();
+      alert(data);
+
+      setProfessor("");
+      setCourseName("");
+      setCourseCode("");
+      setYearOffered("");
+      setQuarter("");
+      setFileName("");
+      setViewPdf(null);
+      setPdfObject(null);
+      document.getElementById("file_upload").value = "";
+    } else {
+      alert("Failed to upload syllabus");
+    }
   };
 
   return (
@@ -80,7 +109,7 @@ const Upload = () => {
         aria-label="Course syllabus upload form"
         onSubmit={(e) => e.preventDefault()}
       >
-        <label htmlFor="Professor First and Last Name">
+        <label htmlFor="professor">
           Professor&apos;s First and Last Name*
           <input
             type="text"
@@ -91,7 +120,7 @@ const Upload = () => {
             required
           />
         </label>
-        <label htmlFor="Course Name">
+        <label htmlFor="course_name">
           Course Name*
           <input
             type="text"
@@ -102,7 +131,7 @@ const Upload = () => {
             required
           />
         </label>
-        <label htmlFor="Course Code">
+        <label htmlFor="course_code">
           Course Code*
           <input
             type="text"
@@ -113,10 +142,10 @@ const Upload = () => {
             required
           />
         </label>
-        <label htmlFor="Year Offered">
+        <label htmlFor="year_offered">
           Year Offered*
           <input
-            type="text"
+            type="number"
             id="year_offered"
             placeholder="E.g. 2024"
             value={yearOffered}
@@ -124,8 +153,8 @@ const Upload = () => {
             required
           />
         </label>
-        <label htmlFor="Quarter Offered">
-          Quarter Offered*
+        <div className="quarters_offered">
+          <p>Quarter Offered*</p>
           <ul className="items-center w-full rounded-lg sm:flex">
             <li>
               <div className="flex items-center">
@@ -136,6 +165,7 @@ const Upload = () => {
                   value="AUT"
                   checked={quarter === "AUT"}
                   onChange={() => setQuarter("AUT")}
+                  required
                   className="w-8 h-8 rounded focus:ring-2"
                 />
                 <label
@@ -155,6 +185,7 @@ const Upload = () => {
                   value="WTR"
                   checked={quarter === "WTR"}
                   onChange={() => setQuarter("WTR")}
+                  required
                   className="w-8 h-8 rounded focus:ring-2"
                 />
                 <label
@@ -174,6 +205,7 @@ const Upload = () => {
                   value="SPR"
                   checked={quarter === "SPR "}
                   onChange={() => setQuarter("SPR")}
+                  required
                   className="w-8 h-8 rounded focus:ring-2"
                 />
                 <label
@@ -193,6 +225,7 @@ const Upload = () => {
                   value="SUM"
                   checked={quarter === "SUM"}
                   onChange={() => setQuarter("SUM")}
+                  required
                   className="w-8 h-8 rounded focus:ring-2"
                 />
                 <label
@@ -204,53 +237,53 @@ const Upload = () => {
               </div>
             </li>
           </ul>
-        </label>
+        </div>
+        <div className="file_upload">
+          <label htmlFor="file_upload">Syllabus*</label>
+          <p>
+            Help us out by uploading a syllabus! Print a PDF copy of your
+            syllabus on canvas and upload it to this page.&nbsp;
+            <a href="https://www.consumerfinance.gov/consumer-tools/save-as-pdf-instructions/">
+              Here are instructions to print a web page to pdf.
+            </a>
+            &nbsp;If your class doesn&apos;t have a syllabus on canvas fill out
+            this form here.
+          </p>
+          <input
+            type="file"
+            id="file_upload"
+            name="file_name"
+            accept=".pdf"
+            onChange={handlePdfFileChange}
+            required
+          ></input>
+        </div>
+        <div className="container">
+          {viewPdf && (
+            <>
+              <p>View PDF</p>
+              <div className="pdf-container">
+                <object
+                  data={viewPdf}
+                  type="application/pdf"
+                  aria-label="Your uploaded syllabus"
+                >
+                  <p>Your browser doesn&apos;t have a PDF plugin to display </p>
+                </object>
+              </div>
+              <div className="submit_button_container">
+                <button
+                  type="submit"
+                  className="submit_button"
+                  onClick={handleSubmit}
+                >
+                  Upload
+                </button>
+              </div>
+            </>
+          )}
+        </div>
       </form>
-      <form className="file_upload">
-        <label htmlFor="file_upload">Syllabus*</label>
-        <p>
-          Help us out by uploading a syllabus! Print a PDF copy of your syllabus
-          on canvas and upload it to this page.&nbsp;
-          <a href="https://www.consumerfinance.gov/consumer-tools/save-as-pdf-instructions/">
-            Here are instructions to print a web page to pdf.
-          </a>
-          &nbsp;If your class doesn&apos;t have a syllabus on canvas fill out
-          this form here.
-        </p>
-        <input
-          type="file"
-          id="file_upload"
-          name="file_name"
-          accept=".pdf"
-          onChange={handlePdfFileChange}
-          required
-        ></input>
-      </form>
-      <div className="container">
-        {viewPdf && (
-          <>
-            <p>View PDF</p>
-            <div className="pdf-container">
-              <object
-                data={viewPdf}
-                type="application/pdf"
-                aria-label="Your uploaded syllabus"
-              >
-                <p>Your browser doesn&apos;t have a PDF plugin to display </p>
-              </object>
-            </div>
-            <div className="submit_button_container">
-              <button
-                type="submit"
-                className="submit_button"
-                onClick={handleSubmit}
-              >
-                Upload
-              </button>
-            </div>
-          </>
-        )}
-      </div>
     </main>
   );
 };
