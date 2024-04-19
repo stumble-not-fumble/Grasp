@@ -20,8 +20,6 @@ body {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  margin-left: 6%; /* Adjust the left margin as needed */
-  margin-right: 6%; /* Adjust the right margin as needed */
 }
 
 img,
@@ -69,56 +67,53 @@ h6 {
   --color-text: #232027;
 }
 
+main {
+  padding-left: 7.84rem;
+  padding-right: 6.25rem;
+}
+
 nav,
 footer {
-  main {
-    padding-left: 7.84rem;
-    padding-right: 6.25rem;
-  }
+  padding-left: 7.84rem;
+  padding-right: 6.25rem;
+}
 
-  nav,
-  footer {
-    padding-left: 7.84rem;
-    padding-right: 6.25rem;
-  }
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 3.125rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--color-text);
+  text-transform: uppercase;
+  text-decoration: underline var(--color-gold);
+  text-underline-offset: 0.5rem;
+  margin-bottom: 2rem;
+}
 
-  h1 {
-    font-family: "Poppins", sans-serif;
-    font-size: 3.125rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    color: var(--color-text);
-    text-transform: uppercase;
-    text-decoration: underline var(--color-gold);
-    text-underline-offset: 0.5rem;
-    margin-bottom: 2rem;
-  }
+h2 {
+}
 
-  h2 {
-  }
+h3 {
+}
 
-  h3 {
-  }
+ul,
+li,
+a {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.97rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--color-text);
+}
 
-  ul,
-  li,
-  a {
-    font-family: "Poppins", sans-serif;
-    font-size: 0.97rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    color: var(--color-text);
-  }
-
-  p,
-  label {
-    font-family: Urbanist, sans-serif;
-    font-size: 0.9375rem;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    color: var(--color-text);
-  }
+p,
+label {
+  font-family: Urbanist, sans-serif;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  color: var(--color-text);
 }
