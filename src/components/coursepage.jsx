@@ -18,13 +18,21 @@ const CoursePage = () => {
   });
 
   const [selectedYear, setSelectedYear] = useState();
-
-  const options = [
+  const [selectedProfessor, setSelectedProfessor] = useState();
+  const yearOptions = [
     { value: "2018", label: "2018" },
     { value: "2019", label: "2019" },
     { value: "2020", label: "2020" },
     { value: "2021", label: "2021" },
     { value: "2022", label: "2022" },
+  ];
+
+  const professorOptions = [
+    { value: "2018A", label: "2018A" },
+    { value: "2019A", label: "2019A" },
+    { value: "2020A", label: "2020A" },
+    { value: "2021A", label: "2021A" },
+    { value: "2022A", label: "2022A" },
   ];
 
   const toggleQuarter = () => setIsQuarterOpen(!isQuarterOpen);
@@ -35,6 +43,9 @@ const CoursePage = () => {
   };
   const handleYearChange = (selectedYear) => {
     setSelectedYear(selectedYear);
+  };
+  const handleProfessorChange = (selectedProfessor) => {
+    setSelectedProfessor(selectedProfessor);
   };
 
   return (
@@ -74,7 +85,7 @@ const CoursePage = () => {
             </button>
             {isYearOpen && (
               <div className="section-content">
-                <div className="select-container">
+                {/* <div className="select-container">
                   {["Spring", "Summer", "Fall", "Winter"].map((quarter) => (
                     <label key={quarter}>
                       <input
@@ -85,7 +96,8 @@ const CoursePage = () => {
                       {quarter}
                     </label>
                   ))}
-                </div>
+                </div> */}
+                <Dropdown options={yearOptions} onChange={handleYearChange} />
               </div>
             )}
           </div>
@@ -96,7 +108,7 @@ const CoursePage = () => {
             </button>
             {isProfessorOpen && (
               <div className="section-content">
-                <div className="select-container">
+                {/* <div className="select-container">
                   {["Spring", "Summer", "Fall", "Winter"].map((quarter) => (
                     <label key={quarter}>
                       <input
@@ -107,7 +119,11 @@ const CoursePage = () => {
                       {quarter}
                     </label>
                   ))}
-                </div>
+                </div> */}
+                <Dropdown
+                  options={professorOptions}
+                  onChange={handleProfessorChange}
+                />
               </div>
             )}
           </div>

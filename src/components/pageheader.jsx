@@ -5,7 +5,6 @@ const PageHeader = () => {
       <div>
         <div className="header-container">
           <h1>INFO 340</h1>
-          <div className="divider"></div>
         </div>
         {}
       </div>

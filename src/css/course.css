@@ -19,14 +19,6 @@
   margin: 0;
 }
 
-.divider {
-  height: 4px;
-  width: 180px;
-  margin-left: 10px;
-  margin-right: 32px;
-  background-color: var(--color-gold);
-  margin-bottom: 50px;
-}
 .course-content {
   flex: 1; /* Each content section takes up an equal amount of space */
   height: 100%;
