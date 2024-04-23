@@ -182,9 +182,9 @@ const Upload = () => {
                   id="winter-checkbox-list"
                   type="radio"
                   name="quarter"
-                  value="WTR"
-                  checked={quarter === "WTR"}
-                  onChange={() => setQuarter("WTR")}
+                  value="WIN"
+                  checked={quarter === "WIN"}
+                  onChange={() => setQuarter("WIN")}
                   required
                   className="w-8 h-8 rounded focus:ring-2"
                 />
