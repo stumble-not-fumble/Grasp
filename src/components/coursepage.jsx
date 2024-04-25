@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import Dropdown from "./dropdown";
+import { Document, Page } from "react-pdf";
 import { toTitleCase } from "../utils/strings";
 import "../css/course.css";
 import { useEffect, useState } from "react";
@@ -13,37 +14,20 @@ const CoursePage = () => {
   const [courseData, setCourseData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [selectedQuarters, setSelectedQuarters] = useState({
-    Spring: false,
-    Summer: false,
-    Fall: false,
-    Winter: false,
-  });
+  const [selectedQuarter, setSelectedQuarter] = useState("WIN");
 
-  const [selectedYear, setSelectedYear] = useState();
-  const [selectedProfessor, setSelectedProfessor] = useState();
+  const [selectedYear, setSelectedYear] = useState(2022);
+  const [selectedProfessor, setSelectedProfessor] = useState("joel ross");
+  const [pdfBlob, setPdfBlob] = useState(null);
+
   const years = new Set();
-  // const yearOptions = [
-  //   { value: "2018", label: "2018" },
-  //   { value: "2019", label: "2019" },
-  //   { value: "2020", label: "2020" },
-  //   { value: "2021", label: "2021" },
-  //   { value: "2022", label: "2022" },
-  // ];
   const professors = new Set();
-  // const professorOptions = [
-  //   { value: "2018A", label: "2018A" },
-  //   { value: "2019A", label: "2019A" },
-  //   { value: "2020A", label: "2020A" },
-  //   { value: "2021A", label: "2021A" },
-  //   { value: "2022A", label: "2022A" },
-  // ];
 
   const toggleQuarter = () => setIsQuarterOpen(!isQuarterOpen);
   const toggleYear = () => setIsYearOpen(!isYearOpen);
   const toggleProfessor = () => setIsProfessorOpen(!isProfessorOpen);
   const handleQuarterChange = (quarter) => {
-    setSelectedQuarters((prev) => ({ ...prev, [quarter]: !prev[quarter] }));
+    setSelectedQuarter(quarter);
   };
   const handleYearChange = (selectedYear) => {
     setSelectedYear(selectedYear);
@@ -56,8 +40,14 @@ const CoursePage = () => {
   var courseMajor = course.course_major;
   var courseNumber = course.course_number;
   var courseTitle = course.course_title;
-  var currentCoursePDFKey = null;
+  let currentCoursePDFKey;
   if (courseData && courseData.offered) {
+    console.log("selected year is");
+    console.log(selectedYear);
+    console.log("selected Quarter is");
+    console.log(selectedQuarter);
+    console.log("selected Professor is");
+    console.log(selectedProfessor);
     courseData.offered.forEach((offeredItem) => {
       professors.add(offeredItem.professor);
       years.add(offeredItem.year);
@@ -69,6 +59,31 @@ const CoursePage = () => {
       return { value: year, label: year };
     });
   }
+
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   if (currentCoursePDFKey) {
+  //     fetch(`https://grasp-api.fly.dev/pdf/${currentCoursePDFKey}`)
+  //       .then((response) => {
+  //         if (!response.ok) {
+  //           throw new Error("Network response was not ok");
+  //         }
+  //         return response.blob();
+  //       })
+  //       .then((blob) => {
+  //         setPdfBlob(blob);
+  //         setIsLoading(false);
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error fetching data: ", error);
+  //         setError(error);
+  //         setIsLoading(false);
+  //       });
+  //   } else {
+  //     console.log("the coursePDF key is null");
+  //     setIsLoading(false);
+  //   }
+  // }, [currentCoursePDFKey, selectedProfessor, selectedQuarter, selectedYear]); // Dependencies to trigger re-fetch if any of them changes
 
   useEffect(() => {
     setIsLoading(true);
