@@ -96,108 +96,81 @@ const CoursePage = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div className="course-container">
-      <div className="course-content">
-        <div className="left-column">
-          <p>
-            Select a quarter, year, and professor to view the course&apos;s
-            syllabus.
-            <br />
-            <br />
-          </p>
-          <div className="expandable-section">
-            <button onClick={toggleQuarter} className="section-header">
-              Quarter*
-            </button>
-            {isQuarterOpen && (
-              <div className="section-content">
-                <div className="select-container">
-                  {["Spring", "Summer", "Fall", "Winter"].map((quarter) => (
-                    <label key={quarter}>
-                      <input
-                        type="checkbox"
-                        checked={selectedQuarters[quarter]}
-                        onChange={() => handleQuarterChange(quarter)}
-                      />
-                      {quarter}
-                    </label>
-                  ))}
+    <main>
+      <div className="course-container">
+        <div className="course-content">
+          <div className="left-column">
+            <p>
+              Select a quarter, year, and professor to view the course&apos;s
+              syllabus.
+              <br />
+              <br />
+            </p>
+            <div className="expandable-section">
+              <button onClick={toggleQuarter} className="section-header">
+                Quarter*
+              </button>
+              {isQuarterOpen && (
+                <div className="section-content">
+                  <div className="select-container">
+                    {["Spring", "Summer", "Fall", "Winter"].map((quarter) => (
+                      <label key={quarter}>
+                        <input
+                          type="checkbox"
+                          checked={selectedQuarters[quarter]}
+                          onChange={() => handleQuarterChange(quarter)}
+                        />
+                        {quarter}
+                      </label>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
-          <div className="expandable-section">
-            <button onClick={toggleYear} className="section-header">
-              Year*
-            </button>
-            {isYearOpen && (
-              <div className="section-content">
-                {/* <div className="select-container">
-                  {["Spring", "Summer", "Fall", "Winter"].map((quarter) => (
-                    <label key={quarter}>
-                      <input
-                        type="checkbox"
-                        checked={selectedQuarters[quarter]}
-                        onChange={() => handleQuarterChange(quarter)}
-                      />
-                      {quarter}
-                    </label>
-                  ))}
-                </div> */}
-                <Dropdown options={yearOptions} onChange={handleYearChange} />
-              </div>
-            )}
-          </div>
-
-          <div className="expandable-section">
-            <button onClick={toggleProfessor} className="section-header">
-              Professor*
-            </button>
-            {isProfessorOpen && (
-              <div className="section-content">
-                {/* <div className="select-container">
-                  {["Spring", "Summer", "Fall", "Winter"].map((quarter) => (
-                    <label key={quarter}>
-                      <input
-                        type="checkbox"
-                        checked={selectedQuarters[quarter]}
-                        onChange={() => handleQuarterChange(quarter)}
-                      />
-                      {quarter}
-                    </label>
-                  ))}
-                </div> */}
-                <Dropdown
-                  options={professorOptions}
-                  onChange={handleProfessorChange}
-                />
-              </div>
-            )}
-          </div>
-        </div>
-        <div className="right-column">
-          <div>
-            <div className="header-container">
-              <h1>{`${course.course_major.toUpperCase()} ${course.course_number} ${toTitleCase(course.course_title)}`}</h1>
+              )}
             </div>
-            {}
+            <div className="expandable-section">
+              <button onClick={toggleYear} className="section-header">
+                Year*
+              </button>
+              {isYearOpen && (
+                <div className="section-content">
+                  <Dropdown options={yearOptions} onChange={handleYearChange} />
+                </div>
+              )}
+            </div>
+
+            <div className="expandable-section">
+              <button onClick={toggleProfessor} className="section-header">
+                Professor*
+              </button>
+              {isProfessorOpen && (
+                <div className="section-content">
+                  <Dropdown
+                    options={professorOptions}
+                    onChange={handleProfessorChange}
+                  />
+                </div>
+              )}
+            </div>
           </div>
-          <div className="course-summary">
-            <h2>Course Summary:</h2>
-            {courseData && <p>{courseData.course_description}</p>}
+          <div className="right-column">
+            <div>
+              <div className="header-container">
+                <h1>{`${course.course_major.toUpperCase()} ${course.course_number} ${toTitleCase(course.course_title)}`}</h1>
+              </div>
+            </div>
+            <div className="course-summary">
+              <h2>Course Summary:</h2>
+              {courseData && <p>{courseData.course_description}</p>}
+            </div>
+            <div className="course-syllabus">
+              <h2>Course Syllabus</h2>
+              <div className="syllabus-placeholder"></div>
+            </div>
+            <button className="explore-button">Explore</button>
           </div>
-          {/* <div className="course-prerequisites">
-            <h2>Prerequisite:</h2>
-            <p>Either CSE 123, CSE 143, CSE 154, or CSE 163; and INFO 201.</p>
-          </div> */}
-          <div className="course-syllabus">
-            <h2>Course Syllabus</h2>
-            <div className="syllabus-placeholder"></div>
-          </div>
-          <button className="explore-button">Explore</button>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
