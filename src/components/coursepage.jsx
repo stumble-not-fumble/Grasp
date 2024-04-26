@@ -103,8 +103,6 @@ const CoursePage = () => {
             <p>
               Select a quarter, year, and professor to view the course&apos;s
               syllabus.
-              <br />
-              <br />
             </p>
             <div className="expandable-section">
               <button onClick={toggleQuarter} className="section-header">
