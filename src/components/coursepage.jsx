@@ -1,6 +1,5 @@
 import { useLocation } from "react-router-dom";
 import Dropdown from "./dropdown";
-import { Document, Page } from "react-pdf";
 import { toTitleCase } from "../utils/strings";
 import "../css/course.css";
 import { useEffect, useState } from "react";
