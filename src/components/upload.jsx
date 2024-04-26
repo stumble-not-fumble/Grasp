@@ -203,7 +203,7 @@ const Upload = () => {
                   type="radio"
                   name="quarter"
                   value="SPR"
-                  checked={quarter === "SPR "}
+                  checked={quarter === "SPR"}
                   onChange={() => setQuarter("SPR")}
                   required
                   className="w-8 h-8 rounded focus:ring-2"
