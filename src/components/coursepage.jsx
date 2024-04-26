@@ -14,10 +14,10 @@ const CoursePage = () => {
   const [courseData, setCourseData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [selectedQuarter, setSelectedQuarter] = useState("WIN");
+  const [selectedQuarter, setSelectedQuarter] = useState();
 
-  const [selectedYear, setSelectedYear] = useState(2022);
-  const [selectedProfessor, setSelectedProfessor] = useState("joel ross");
+  const [selectedYear, setSelectedYear] = useState();
+  const [selectedProfessor, setSelectedProfessor] = useState();
   const [pdfBlob, setPdfBlob] = useState(null);
 
   const years = new Set();
@@ -48,9 +48,28 @@ const CoursePage = () => {
     console.log(selectedQuarter);
     console.log("selected Professor is");
     console.log(selectedProfessor);
+    console.log("course data");
+    console.log(courseData);
     courseData.offered.forEach((offeredItem) => {
       professors.add(offeredItem.professor);
       years.add(offeredItem.year);
+      if (
+        selectedProfessor == offeredItem.professor &&
+        selectedQuarter == offeredItem.quarter &&
+        selectedYear == offeredItem.year
+      ) {
+        console.log("offer year is");
+        console.log(offeredItem.year);
+        console.log("offer Quarter is");
+        console.log(offeredItem.quarter);
+        console.log("offer Professor is");
+        console.log(offeredItem.professor);
+        console.log("pdf key");
+        console.log(offeredItem.pdf);
+        // currentCoursePDFKey = offeredItem.pdf;
+        currentCoursePDFKey =
+          "info_340_client-side-development%2F2022_WIN_joel-ross_c120132b-0c47-4d09-a564-37b5616e1ecb.pdf";
+      }
     });
     professorOptions = Array.from(professors).map((professor) => {
       return { value: professor, label: professor };
@@ -83,7 +102,7 @@ const CoursePage = () => {
   //     console.log("the coursePDF key is null");
   //     setIsLoading(false);
   //   }
-  // }, [currentCoursePDFKey, selectedProfessor, selectedQuarter, selectedYear]); // Dependencies to trigger re-fetch if any of them changes
+  // }, [currentCoursePDFKey, selectedProfessor, selectedQuarter, selectedYear]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -177,7 +196,15 @@ const CoursePage = () => {
             </div>
             <div className="course-syllabus">
               <h2>Course Syllabus</h2>
-              <div className="syllabus-placeholder"></div>
+              <div className="syllabus-placeholder">
+                <div>
+                  <iframe
+                    src="src/data/info340.pdf"
+                    width="100%"
+                    height="600px"
+                  />
+                </div>
+              </div>
             </div>
             <button className="explore-button">Explore</button>
           </div>
