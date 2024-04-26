@@ -8,9 +8,9 @@ import { useEffect, useState } from "react";
 const CoursePage = () => {
   const location = useLocation();
   const course = location.state.course;
-  const [isQuarterOpen, setIsQuarterOpen] = useState(false);
-  const [isYearOpen, setIsYearOpen] = useState(false);
-  const [isProfessorOpen, setIsProfessorOpen] = useState(false);
+  const [isQuarterOpen, setIsQuarterOpen] = useState(true);
+  const [isYearOpen, setIsYearOpen] = useState(true);
+  const [isProfessorOpen, setIsProfessorOpen] = useState(true);
   const [courseData, setCourseData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -35,8 +35,8 @@ const CoursePage = () => {
   const handleProfessorChange = (selectedProfessor) => {
     setSelectedProfessor(selectedProfessor);
   };
-  let professorOptions;
-  let yearOptions;
+  let professorOptions = [];
+  let yearOptions = [];
   var courseMajor = course.course_major;
   var courseNumber = course.course_number;
   var courseTitle = course.course_title;
@@ -105,7 +105,7 @@ const CoursePage = () => {
         setError(error);
         setIsLoading(false);
       });
-  }, []); // Dependencies to trigger re-fetch if any of them changes
+  }, []);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
@@ -125,18 +125,18 @@ const CoursePage = () => {
               </button>
               {isQuarterOpen && (
                 <div className="section-content">
-                  <div className="select-container">
-                    {["Spring", "Summer", "Fall", "Winter"].map((quarter) => (
-                      <label key={quarter}>
-                        <input
-                          type="checkbox"
-                          checked={selectedQuarters[quarter]}
-                          onChange={() => handleQuarterChange(quarter)}
-                        />
-                        {quarter}
-                      </label>
-                    ))}
-                  </div>
+                  {["SPR", "SUM", "AUT", "WIN"].map((quarter) => (
+                    <label key={quarter} className="radio-label block mb-2">
+                      <input
+                        type="radio"
+                        value={quarter}
+                        checked={selectedQuarter === quarter}
+                        onChange={() => handleQuarterChange(quarter)}
+                        className="mr-2"
+                      />
+                      {quarter}
+                    </label>
+                  ))}
                 </div>
               )}
             </div>
