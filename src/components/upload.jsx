@@ -78,7 +78,7 @@ const Upload = () => {
     formData.forEach((value, key) => {
       console.log(key, value);
     });
-    const response = await fetch("http://grasp-api.fly.dev/upload", {
+    const response = await fetch("https://grasp-api.fly.dev/upload", {
       method: "POST",
       body: formData,
     });
