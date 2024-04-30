@@ -66,6 +66,8 @@ const CoursePage = () => {
         console.log("pdf key");
         console.log(offeredItem.pdf);
         // currentCoursePDFKey = offeredItem.pdf;
+        console.log("yesss");
+        console.log(currentCoursePDFKey);
         currentCoursePDFKey =
           "info_340_client-side-development%2F2022_WIN_joel-ross_c120132b-0c47-4d09-a564-37b5616e1ecb.pdf";
       }
@@ -195,13 +197,19 @@ const CoursePage = () => {
             </div>
             <div className="course-syllabus">
               <h2>Course Syllabus</h2>
-              <div className="syllabus-placeholder">
+              <div>
                 <div>
-                  <iframe
-                    src="src/data/info340.pdf"
-                    width="100%"
-                    height="600px"
-                  />
+                  {currentCoursePDFKey != null ? (
+                    <iframe
+                      src={
+                        "https://grasp-api.fly.dev/pdf/" + currentCoursePDFKey
+                      }
+                      width="100%"
+                      height="600px"
+                    />
+                  ) : (
+                    <div className="syllabus-placeholder"></div>
+                  )}
                 </div>
               </div>
             </div>
