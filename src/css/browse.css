@@ -1,0 +1,52 @@
+.browse-main {
+    font-family: 'Urbanist', sans-serif; 
+    padding: 2rem;
+  }
+  
+  .page-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .browse-container {
+    display: flex;
+    width: 100%;
+  }
+  
+  .filter-section {
+    width: 20%; 
+    margin-right: 2rem;
+    padding: 1rem;
+    border-right: 2px solid #e0e0e0; /* Color as per your theme */
+  }
+  
+  .filter-group {
+    margin-bottom: 1rem;
+  }
+  
+  .filter-group label {
+    display: block;
+    margin-bottom: .5rem;
+  }
+  
+  .filter-group input {
+    width: 100%;
+    padding: .5rem;
+    border: 1px solid #ccc;
+    border-radius: .25rem;
+  }
+  
+  .courses-section {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  /* Sample style for a course card, not right */
+  .course-card {
+    flex-basis: calc(33.333% - 1rem); 
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: .25rem;
+  }  
