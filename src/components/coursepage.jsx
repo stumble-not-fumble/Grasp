@@ -85,6 +85,14 @@ const CoursePage = () => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
+  // Mapping quarter abbreviations to full names
+  const quarterNames = {
+    SPR: "Spring",
+    SUM: "Summer",
+    AUT: "Autumn",
+    WIN: "Winter",
+  };
+
   return (
     <main>
       <div className="course-container">
@@ -109,7 +117,7 @@ const CoursePage = () => {
                         onChange={() => handleQuarterChange(quarter)}
                         className="mr-2"
                       />
-                      {quarter}
+                      {quarterNames[quarter]}
                     </label>
                   ))}
                 </div>

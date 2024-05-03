@@ -1,19 +1,4 @@
-/* .header-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  width: 100%;
-} */
-
-/* .header-container h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  text-align: left;
-  padding: 0;
-  margin: 0;
-} */
-
+/* Left Side Bar */
 /* Overall div that wraps both the left sidebar and the content */
 .course-content {
   height: 100%;
@@ -21,6 +6,19 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.section-header {
+  font-family: Poppins;
+  font-size: 0.9375rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+}
+
 
 .select-container label {
   display: block;
@@ -49,9 +47,9 @@
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
-} */
+}
 
-/* .course-content {
+.course-content {
   padding: 20px;
 } */
 
@@ -119,19 +117,6 @@
   .course-header h1 {
     padding: 10px 0;
   }
-}
-
-.section-header {
-  background: none;
-  border: none;
-  text-align: left;
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .section-header::after {
