@@ -1,10 +1,16 @@
-/* Left Side Bar */
+
 /* Overall div that wraps both the left sidebar and the content */
 .course-content {
   height: 100%;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+}
+
+/* Left Side Bar */
+.left-column {
+  padding-top: 15px;
+  width: 20%;
 }
 
 .section-header {
@@ -18,7 +24,6 @@
   display: flex;
   align-items: center;
 }
-
 
 .select-container label {
   display: block;
@@ -39,19 +44,6 @@
 .search-container input {
   margin-bottom: 10px; /* Add some space between the inputs */
 }
-
-/* .course-container {
-  font-family: "Arial", sans-serif;
-  max-width: 100%;
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-}
-
-.course-content {
-  padding: 20px;
-} */
 
 .course-syllabus {
   padding: 20px;
@@ -129,12 +121,20 @@
   content: "▲";
 }
 
-.select-container select {
-  padding: 5px;
-  margin-right: 10px;
+/* Dropdown */
+.select-selected, .select-items {
+  padding: 0.4rem;
+  width: 100%;
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-purple);
+  font-family: Urbanist;
+  font-size: 0.9375rem;
 }
 
-.left-column {
-  padding-top: 15px;
-  width: 20%;
+.custom-select, .select-items {
+  margin-bottom: 1.44rem;
+}
+
+.select-items div {
+  margin-bottom: 0.44rem;
 }
