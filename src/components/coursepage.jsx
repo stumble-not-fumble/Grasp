@@ -41,14 +41,6 @@ const CoursePage = () => {
   var courseTitle = course.course_title;
   let currentCoursePDFKey;
   if (courseData && courseData.offered) {
-    console.log("selected year is");
-    console.log(selectedYear);
-    console.log("selected Quarter is");
-    console.log(selectedQuarter);
-    console.log("selected Professor is");
-    console.log(selectedProfessor);
-    console.log("course data");
-    console.log(courseData);
     courseData.offered.forEach((offeredItem) => {
       professors.add(offeredItem.professor);
       years.add(offeredItem.year);
@@ -57,19 +49,7 @@ const CoursePage = () => {
         selectedQuarter == offeredItem.quarter &&
         selectedYear == offeredItem.year
       ) {
-        console.log("offer year is");
-        console.log(offeredItem.year);
-        console.log("offer Quarter is");
-        console.log(offeredItem.quarter);
-        console.log("offer Professor is");
-        console.log(offeredItem.professor);
-        console.log("pdf key");
-        console.log(offeredItem.pdf);
-        // currentCoursePDFKey = offeredItem.pdf;
-        console.log("yesss");
-        console.log(currentCoursePDFKey);
-        currentCoursePDFKey =
-          "info_340_client-side-development%2F2022_WIN_joel-ross_c120132b-0c47-4d09-a564-37b5616e1ecb.pdf";
+        currentCoursePDFKey = offeredItem.pdf;
       }
     });
     professorOptions = Array.from(professors).map((professor) => {
