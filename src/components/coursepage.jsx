@@ -17,7 +17,6 @@ const CoursePage = () => {
 
   const [selectedYear, setSelectedYear] = useState();
   const [selectedProfessor, setSelectedProfessor] = useState();
-  const [pdfBlob, setPdfBlob] = useState(null);
 
   const years = new Set();
   const professors = new Set();
@@ -208,7 +207,9 @@ const CoursePage = () => {
                       height="600px"
                     />
                   ) : (
-                    <div className="syllabus-placeholder"></div>
+                    <div className="syllabus-placeholder">
+                      <p>No syllabus available</p>
+                    </div>
                   )}
                 </div>
               </div>
