@@ -1,19 +1,23 @@
 <div align="center">
   <h1>
-      <img src="./src/img/grasp_title.png" height="90">
+      <a href="https://grasp.fly.dev/"/>
+        <img src="./src/img/grasp_title.png" height="90">
+      </a>
   </h1>
   <p>By: Stumble not Fumble</p>
   <p align="center">
-    <em align="center"> An <strong>ONE</strong> resource for Unviersity of Washington's🎓 students to find and share information about courses.</em>
+    <em align="center"> An <strong>ONE</strong> resource for Unviersity of Washington's students to find and share information about courses.</em>
   </p>
 </div>
 
 ## Inspiration and Problem Statement
-The University of Washington is a large institution with a wide variety of courses. With so many courses, it can be difficult for students to find the right courses for them. There is also limited information about courses, and those information is scattered on various platoforms. This problem has motivated the Stumble not Fumble team to create Grasp, an <strong>one</strong> resource that allows students to find and share information about courses at the University of Washington.
+At the University of Washington, the course offerings are diverse, catering to a wide range of academic interests. However, amidst this abundance, students often find themselves struggling to navigate the myriad options available to them. Moreover, crucial information about these courses is dispersed across various platforms, making it challenging for students to access comprehensive details. Recognizing this issue, the Stumble not Fumble team has developed Grasp—a comprehensive solution aimed at simplifying the course discovery process for University of Washington students. Grasp serves as a centralized hub where students can find and share information about courses, empowering them to make well-informed decisions about their academic pursuits.
 
+## Accessing Grasp
+Grasp can be accessed via https://grasp.fly.dev/.
 
 ## Development
-Instead of using the host version (to be deployed soon!), Grasp can be run locally.
+To run Grasp locally, follow the steps below.
 
 <details open>
 <summary>
@@ -33,21 +37,23 @@ To start development on Grasp, make sure that you have the following prerequisit
 Running Grasp
 </summary><br/>
 
-<p> 1. Clone the respository & install dependencies </p>
+<p> 1. Clone the respository </p>
 
 ```bash
-git clone https://github.com/SamLovesCoding2/grasp.git && npm run dev
+git clone https://github.com/stumble-not-fumble/Grasp.git
 ```
 
-<p> 2. Run Grasp in the development mode. </p>
+<p> 2. Install dependencies </p>
+
+```bash
+npm install
+```
+
+<p> 3. Run Grasp in the development mode. </p>
 
   ```bash
-  npm start
+  npm run dev
 ```
-
-Open <a href="http://localhost:3000"/> http://localhost:3000</a>  to view it in your browswer. \
-The page will reload when you make changes.
-
 
 ## Stumble not Fumble Team
 Dhruth Kesani, Ian Lu, Mia Pham, Gabriella River, Zachary Zang
