@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useLocation } from "react-router-dom";
 import Dropdown from "./dropdown";
 import { toTitleCase } from "../utils/strings";
@@ -78,31 +79,6 @@ const CoursePage = () => {
       return { value: year, label: year };
     });
   }
-
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   if (currentCoursePDFKey) {
-  //     fetch(`https://grasp-api.fly.dev/pdf/${currentCoursePDFKey}`)
-  //       .then((response) => {
-  //         if (!response.ok) {
-  //           throw new Error("Network response was not ok");
-  //         }
-  //         return response.blob();
-  //       })
-  //       .then((blob) => {
-  //         setPdfBlob(blob);
-  //         setIsLoading(false);
-  //       })
-  //       .catch((error) => {
-  //         console.error("Error fetching data: ", error);
-  //         setError(error);
-  //         setIsLoading(false);
-  //       });
-  //   } else {
-  //     console.log("the coursePDF key is null");
-  //     setIsLoading(false);
-  //   }
-  // }, [currentCoursePDFKey, selectedProfessor, selectedQuarter, selectedYear]);
 
   useEffect(() => {
     setIsLoading(true);
