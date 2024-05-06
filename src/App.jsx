@@ -5,7 +5,7 @@ import Navbar from "./components/navbar";
 import CoursePage from "./components/coursepage";
 import Upload from "./components/upload";
 import AboutUs from "./components/aboutus";
-
+import Browse from "./components/browse";
 const App = () => {
   return (
     <>
@@ -15,6 +15,7 @@ const App = () => {
         <Route path="/course-page" element={<CoursePage />} />
         <Route path="aboutus" element={<AboutUs />} />
         <Route path="/upload" element={<Upload />} />
+        <Route path="/browse" element={<Browse />} />
       </Routes>
       <Footer />
     </>

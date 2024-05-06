@@ -1,52 +1,81 @@
 .browse-main {
-    font-family: 'Urbanist', sans-serif; 
-    padding: 2rem;
-  }
-  
-  .page-title {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .browse-container {
-    display: flex;
-    width: 100%;
-  }
-  
-  .filter-section {
-    width: 20%; 
-    margin-right: 2rem;
-    padding: 1rem;
-    border-right: 2px solid #e0e0e0; /* Color as per your theme */
-  }
-  
-  .filter-group {
-    margin-bottom: 1rem;
-  }
-  
-  .filter-group label {
-    display: block;
-    margin-bottom: .5rem;
-  }
-  
-  .filter-group input {
-    width: 100%;
-    padding: .5rem;
-    border: 1px solid #ccc;
-    border-radius: .25rem;
-  }
-  
-  .courses-section {
-    width: 80%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  
-  /* Sample style for a course card, not right */
-  .course-card {
-    flex-basis: calc(33.333% - 1rem); 
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: .25rem;
-  }  
+  font-family: "Urbanist", sans-serif;
+  padding: 2rem;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.browse-container {
+  display: flex;
+  width: 100%;
+}
+
+.filter-section {
+  width: 20%;
+  margin-right: 2rem;
+  padding: 1rem;
+  border-right: 2px solid #e0e0e0; /* Color as per your theme */
+}
+
+.filter-group {
+  margin-bottom: 1rem;
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.filter-group input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+
+.courses-section {
+  width: 80%;
+  display: grid;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; /* Adjust the gap between cards as needed */
+}
+
+/* Sample style for a course card, not right */
+.course-card {
+  flex-basis: calc(33.333% - 1rem);
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+
+.cardContainer {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 10px;
+  max-width: 300px;
+}
+
+.header {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.info {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.credits {
+  font-size: 14px;
+  color: #666;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}

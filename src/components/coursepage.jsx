@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useLocation } from "react-router-dom";
 import Dropdown from "./dropdown";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
 import { toTitleCase } from "../utils/strings";
 import "../css/course.css";
 import { useEffect, useState } from "react";
@@ -121,7 +123,17 @@ const CoursePage = () => {
               </button>
               {isYearOpen && (
                 <div className="section-content">
-                  <Dropdown options={yearOptions} onChange={handleYearChange} />
+                  <Autocomplete
+                    id="year-select"
+                    options={yearOptions || []}
+                    getOptionLabel={(option) => "" + option.value}
+                    renderInput={(params) => (
+                      <TextField {...params} label="Year" />
+                    )}
+                    onChange={(event, newValue) => {
+                      handleYearChange(newValue);
+                    }}
+                  />
                 </div>
               )}
             </div>
@@ -132,9 +144,16 @@ const CoursePage = () => {
               </button>
               {isProfessorOpen && (
                 <div className="section-content">
-                  <Dropdown
-                    options={professorOptions}
-                    onChange={handleProfessorChange}
+                  <Autocomplete
+                    id="year-select"
+                    options={professorOptions || []}
+                    getOptionLabel={(option) => "" + option.value}
+                    renderInput={(params) => (
+                      <TextField {...params} label="Year" />
+                    )}
+                    onChange={(event, newValue) => {
+                      handleYearChange(newValue);
+                    }}
                   />
                 </div>
               )}
