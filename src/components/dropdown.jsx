@@ -20,6 +20,22 @@ const CustomSelect = ({ options, onChange }) => {
     <div className="custom-select" onClick={toggleSelect}>
       <div className="select-selected">
         {selectedOption ? selectedOption.label : "Select an option"}
+        <svg
+          className="arrow ml-auto rotate-180"
+          id="drp-arrow"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M7 14.5l5-5 5 5"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          ></path>
+        </svg>
       </div>
       {isOpen && (
         <div className="select-items">

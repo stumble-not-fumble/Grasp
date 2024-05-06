@@ -45,6 +45,32 @@
   margin-bottom: 10px; /* Add some space between the inputs */
 }
 
+/* Option Dropdown */
+.select-selected, .select-items {
+  padding: 0.4rem;
+  width: 100%;
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-purple);
+  font-family: Urbanist;
+  font-size: 0.9375rem;
+}
+
+.select-selected {
+  display: flex;
+}
+
+.custom-select, .select-items {
+  margin-bottom: 1.44rem;
+}
+
+.select-items div {
+  margin-bottom: 0.44rem;
+}
+
+svg {
+  transition: all 0.3s;
+}
+
 .course-syllabus {
   padding: 20px;
 }
@@ -119,22 +145,4 @@
 
 .section-header.active::after {
   content: "▲";
-}
-
-/* Dropdown */
-.select-selected, .select-items {
-  padding: 0.4rem;
-  width: 100%;
-  border-radius: 0.25rem;
-  border: 1px solid var(--color-purple);
-  font-family: Urbanist;
-  font-size: 0.9375rem;
-}
-
-.custom-select, .select-items {
-  margin-bottom: 1.44rem;
-}
-
-.select-items div {
-  margin-bottom: 0.44rem;
 }
