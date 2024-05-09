@@ -90,6 +90,7 @@ const Browse = () => {
         setIsLoading(false);
       });
   }, []);
+
   return (
     <main className="browse-main">
       <h1 className="page-title">Courses</h1>
