@@ -2,6 +2,7 @@ import "../css/browse.css";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import "../css/course.css";
+import Browsecard from "../components/browsecard";
 import { useEffect, useState } from "react";
 
 const Browse = () => {
@@ -39,8 +40,6 @@ const Browse = () => {
         return response.json();
       })
       .then((data) => {
-        console.log("current professor data is: ");
-        console.log(data);
         setProfessorData(data);
         setIsLoading(false);
       })
@@ -61,8 +60,6 @@ const Browse = () => {
         return response.json();
       })
       .then((data) => {
-        console.log("current professor data is: ");
-        console.log(data);
         setYearData(data);
         setIsLoading(false);
       })
@@ -83,6 +80,7 @@ const Browse = () => {
         return response.json();
       })
       .then((data) => {
+        console.log(data);
         setCourseData(data);
         setIsLoading(false);
       })
@@ -94,7 +92,8 @@ const Browse = () => {
   }, []);
   return (
     <main className="browse-main">
-      <h1 className="page-title">Browse Courses</h1>
+      <h1 className="page-title">Courses</h1>
+      <button className="surprise-button">Hidden GEM!</button>
       <div className="browse-container">
         <div className="left-column">
           <p>
@@ -167,7 +166,17 @@ const Browse = () => {
           </div>
         </div>
         <section className="courses-section">
-          {/* Course cards need to go here */}
+          {courseData &&
+            courseData.map((course, index) => (
+              <Browsecard
+                key={index}
+                courseMajor={course.course_major}
+                courseNumber={course.course_number}
+                courseTitle={course.course_title}
+                courseDescription={course.courseDescription}
+                courseCredits={course.courseCredits}
+              />
+            ))}
         </section>
       </div>
     </main>

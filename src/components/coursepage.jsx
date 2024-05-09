@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useLocation } from "react-router-dom";
-import Dropdown from "./dropdown";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import { toTitleCase } from "../utils/strings";
@@ -52,6 +51,7 @@ const CoursePage = () => {
         selectedYear == offeredItem.year
       ) {
         currentCoursePDFKey = offeredItem.pdf;
+        console.log(currentCoursePDFKey);
       }
     });
     professorOptions = Array.from(professors).map((professor) => {
@@ -82,9 +82,9 @@ const CoursePage = () => {
         setError(error);
         setIsLoading(false);
       });
-  }, []);
+  }, [selectedProfessor, selectedQuarter, selectedYear]);
 
-  if (isLoading) return <div>Loading...</div>;
+  // if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
@@ -152,7 +152,7 @@ const CoursePage = () => {
                       <TextField {...params} label="Year" />
                     )}
                     onChange={(event, newValue) => {
-                      handleYearChange(newValue);
+                      handleProfessorChange(newValue);
                     }}
                   />
                 </div>

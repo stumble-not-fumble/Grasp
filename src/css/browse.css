@@ -6,6 +6,20 @@
 .page-title {
   font-size: 2rem;
   margin-bottom: 1rem;
+  margin-left: 25.5%;
+}
+
+.surprise-button {
+  margin-bottom: 1rem;
+  margin-left: 25.5%;
+  width: 120px;
+  padding: 10px;
+  background-color: var(--color-gold);
+  color: #fff;
+  text-align: center;
+  border: none;
+  border-radius: 80px;
+  font-size: 14px;
 }
 
 .browse-container {
@@ -29,6 +43,12 @@
   margin-bottom: 0.5rem;
 }
 
+.main-container {
+  display: grid;
+  grid-template-rows: auto auto;
+  align-items: start;
+  width: 80%;
+}
 .filter-group input {
   width: 100%;
   padding: 0.5rem;
@@ -39,12 +59,11 @@
 .courses-section {
   width: 80%;
   display: grid;
-  display: grid;
+  padding-left: 5%;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px; /* Adjust the gap between cards as needed */
+  gap: 15px;
 }
 
-/* Sample style for a course card, not right */
 .course-card {
   flex-basis: calc(33.333% - 1rem);
   padding: 1rem;

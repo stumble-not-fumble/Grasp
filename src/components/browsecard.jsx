@@ -10,9 +10,9 @@ const Browsecard = ({
   return (
     <div className="cardContainer">
       <div className="header">
-        INFO {courseMajor} {courseNumber}
+        {courseMajor.toUpperCase()} {courseNumber}
       </div>
-      <div className="header">{courseTitle}</div>
+      <div className="header">{courseTitle.toUpperCase()}</div>
       <div className="info">{courseDescription}</div>
       <div className="credits">{courseCredits} credits</div>
     </div>
