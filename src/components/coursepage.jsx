@@ -42,15 +42,16 @@ const CoursePage = () => {
   var courseTitle = course.course_title;
   let currentCoursePDFKey;
   if (courseData && courseData.offered) {
-    console.log(courseData);
     courseData.offered.forEach((offeredItem) => {
       professors.add(offeredItem.professor);
       years.add(offeredItem.year);
+      console.log(selectedYear);
       if (
         selectedProfessor == offeredItem.professor &&
         selectedQuarter == offeredItem.quarter &&
         selectedYear == offeredItem.year
       ) {
+        console.log("here");
         currentCoursePDFKey = offeredItem.pdf;
         console.log(selectedQuarter);
         console.log(selectedProfessor);
@@ -135,7 +136,7 @@ const CoursePage = () => {
                       <TextField {...params} label="Year" />
                     )}
                     onChange={(event, newValue) => {
-                      handleYearChange(newValue);
+                      handleYearChange(newValue.value);
                     }}
                   />
                 </div>
@@ -156,7 +157,7 @@ const CoursePage = () => {
                       <TextField {...params} label="Professor" />
                     )}
                     onChange={(event, newValue) => {
-                      handleProfessorChange(newValue);
+                      handleProfessorChange(newValue.value);
                     }}
                   />
                 </div>
