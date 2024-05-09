@@ -42,6 +42,7 @@ const CoursePage = () => {
   var courseTitle = course.course_title;
   let currentCoursePDFKey;
   if (courseData && courseData.offered) {
+    console.log(courseData);
     courseData.offered.forEach((offeredItem) => {
       professors.add(offeredItem.professor);
       years.add(offeredItem.year);
@@ -51,6 +52,9 @@ const CoursePage = () => {
         selectedYear == offeredItem.year
       ) {
         currentCoursePDFKey = offeredItem.pdf;
+        console.log(selectedQuarter);
+        console.log(selectedProfessor);
+        console.log(selectedYear);
         console.log(currentCoursePDFKey);
       }
     });
@@ -82,9 +86,9 @@ const CoursePage = () => {
         setError(error);
         setIsLoading(false);
       });
-  }, [selectedProfessor, selectedQuarter, selectedYear]);
+  }, []);
 
-  // if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
@@ -126,7 +130,7 @@ const CoursePage = () => {
                   <Autocomplete
                     id="year-select"
                     options={yearOptions || []}
-                    getOptionLabel={(option) => "" + option.value}
+                    getOptionLabel={(option) => "" + option.value.toString()}
                     renderInput={(params) => (
                       <TextField {...params} label="Year" />
                     )}
@@ -145,11 +149,11 @@ const CoursePage = () => {
               {isProfessorOpen && (
                 <div className="section-content">
                   <Autocomplete
-                    id="year-select"
+                    id="professor-select"
                     options={professorOptions || []}
                     getOptionLabel={(option) => "" + option.value}
                     renderInput={(params) => (
-                      <TextField {...params} label="Year" />
+                      <TextField {...params} label="Professor" />
                     )}
                     onChange={(event, newValue) => {
                       handleProfessorChange(newValue);
