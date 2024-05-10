@@ -1,7 +1,6 @@
 import "../css/browse.css";
-import Autocomplete from "@mui/material/Autocomplete";
-import TextField from "@mui/material/TextField";
 import "../css/course.css";
+
 import Browsecard from "../components/browsecard";
 import { useEffect, useState } from "react";
 
@@ -11,11 +10,12 @@ const Browse = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [selectedCourseLevel, setSelectedCourseLevel] = useState("");
-  const toggleLevel = () => setIsLevelOpen(!isLevelOpen);
   const [currentCourseData, setCurrentCourseData] = useState([]);
+
   const handleCourseLevelChange = (level) => {
     setSelectedCourseLevel(level);
   };
+
   const resetSelectedCourseLevel = () => {
     setSelectedCourseLevel(""); // Reset to initial value
   };
@@ -65,8 +65,7 @@ const Browse = () => {
       <div className="browse-container">
         <div className="left-column">
           <p className="mb-4">
-            Select a quarter, year, and professor to view the course&apos;s
-            syllabus.
+            Browse all the courses or select a specific course level
           </p>
           <div className="expandable-section">
             <button className="section-header">Course Level</button>
@@ -87,12 +86,12 @@ const Browse = () => {
               </div>
             )}
           </div>
-          <div className="hidden-gem">
+          <div className="clear-filter">
             <button
               className="surprise-button"
               onClick={resetSelectedCourseLevel}
             >
-              Clear
+              Clear Filter
             </button>
           </div>
         </div>

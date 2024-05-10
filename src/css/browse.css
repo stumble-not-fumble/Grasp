@@ -4,9 +4,7 @@
 }
 
 .courses-section {
-  /* width: 80%; */
   display: grid;
-  /* padding-left: 5%; */
   grid-template-columns: repeat(3, 1fr);
   gap: 3rem;
 }
@@ -23,7 +21,6 @@
   border: 1px solid var(--color-purple);
   box-shadow: 0 4px 4px rgba(33, 33, 33, 0.15);
   padding: 20px;
-  /* max-width: 300px; */
   max-width: 19rem;
 }
 
@@ -45,4 +42,9 @@
   text-align: center;
   border-radius: 2rem;
   font-size: 0.9375rem;
+}
+
+.clear-filter {
+  display: flex;
+  justify-content: center;
 }
