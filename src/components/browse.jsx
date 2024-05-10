@@ -174,7 +174,7 @@ const Browse = () => {
                 courseMajor={course.course_major}
                 courseNumber={course.course_number}
                 courseTitle={course.course_title}
-                courseDescription={course.courseDescription}
+                courseDescription={course.course_description}
                 courseCredits={course.courseCredits}
               />
             ))}
