@@ -1,6 +1,4 @@
 import "../css/browse.css";
-import Autocomplete from "@mui/material/Autocomplete";
-import TextField from "@mui/material/TextField";
 import "../css/course.css";
 import Browsecard from "../components/browsecard";
 import { useEffect, useState } from "react";
@@ -9,15 +7,25 @@ const Browse = () => {
   const [isLevelOpen, setIsLevelOpen] = useState(true);
   const [courseData, setCourseData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [randomCourse, setRandomCourse] = useState([]); // State to hold the random courses
   const [error, setError] = useState(null);
   const [selectedCourseLevel, setSelectedCourseLevel] = useState("");
-  const toggleLevel = () => setIsLevelOpen(!isLevelOpen);
   const [currentCourseData, setCurrentCourseData] = useState([]);
   const handleCourseLevelChange = (level) => {
     setSelectedCourseLevel(level);
   };
   const resetSelectedCourseLevel = () => {
-    setSelectedCourseLevel(""); // Reset to initial value
+    setSelectedCourseLevel("");
+  };
+
+  const selectRandomCourse = () => {
+    if (courseData.length === 0) {
+      setRandomCourse(null);
+      return;
+    }
+    const randomIndex = Math.floor(Math.random() * courseData.length);
+    setRandomCourse([]);
+    setRandomCourse([courseData[randomIndex]]);
   };
 
   useEffect(() => {
@@ -49,6 +57,7 @@ const Browse = () => {
 
     setCurrentCourseData(filteredData);
   };
+
   useEffect(() => {
     updateCurrentCourseData();
   }, [selectedCourseLevel]);
@@ -122,8 +131,20 @@ const Browse = () => {
                 ))}
           </section>
           <div className="hidden-gem">
-            <button className="surprise-button">Hidden GEM!</button>
+            <button className="surprise-button" onClick={selectRandomCourse}>
+              Hidden GEM!
+            </button>
           </div>
+          {randomCourse &&
+            randomCourse.map((course, index) => (
+              <Browsecard
+                key={index}
+                course_major={course.course_major}
+                course_number={course.course_number}
+                course_title={course.course_title}
+                course_description={course.course_description}
+              />
+            ))}
         </div>
       </div>
     </main>
