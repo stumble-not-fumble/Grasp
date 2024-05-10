@@ -1,67 +1,25 @@
-.browse-main {
-  font-family: "Urbanist", sans-serif;
-  padding: 2rem;
-}
-
-.page-title {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  margin-left: 25.5%;
-}
-
-.surprise-button {
-  margin-bottom: 1rem;
-  margin-left: 25.5%;
-  width: 120px;
-  padding: 10px;
-  background-color: var(--color-gold);
-  color: #fff;
-  text-align: center;
-  border: none;
-  border-radius: 80px;
-  font-size: 14px;
-}
-
 .browse-container {
   display: flex;
   width: 100%;
 }
 
-.filter-section {
-  width: 20%;
-  margin-right: 2rem;
-  padding: 1rem;
-  border-right: 2px solid #e0e0e0; /* Color as per your theme */
-}
-
-.filter-group {
+.surprise-button {
   margin-bottom: 1rem;
-}
-
-.filter-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.main-container {
-  display: grid;
-  grid-template-rows: auto auto;
-  align-items: start;
-  width: 80%;
-}
-.filter-group input {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 0.25rem;
+  width: 120px;
+  padding: 10px;
+  background-color: var(--color-gold);
+  color: var(--color-white);
+  text-align: center;
+  border-radius: 2rem;
+  font-size: 0.9375rem;
 }
 
 .courses-section {
-  width: 80%;
+  /* width: 80%; */
   display: grid;
-  padding-left: 5%;
+  /* padding-left: 5%; */
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+  gap: 3rem;
 }
 
 .course-card {
@@ -71,30 +29,15 @@
   border-radius: 0.25rem;
 }
 
-.cardContainer {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.card-container {
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-purple);
+  box-shadow: 0 4px 4px rgba(33, 33, 33, 0.15);
   padding: 20px;
-  margin: 10px;
-  max-width: 300px;
+  /* max-width: 300px; */
+  max-width: 19rem;
 }
 
-.header {
-  font-size: 18px;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.info {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 20px;
-}
-
-.credits {
-  font-size: 14px;
-  color: #666;
-  border-top: 1px solid #eee;
-  padding-top: 10px;
+.card-container > div:first-child > p{
+  background-color: var(--color-light-gold);
 }

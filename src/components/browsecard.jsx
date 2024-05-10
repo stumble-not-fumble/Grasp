@@ -1,20 +1,27 @@
 import "../css/browse.css";
 import PropTypes from "prop-types";
+
 const Browsecard = ({
   courseMajor,
   courseNumber,
   courseTitle,
   courseDescription,
-  courseCredits,
+  // courseCredits,
 }) => {
   return (
-    <div className="cardContainer">
-      <div className="header">
-        {courseMajor.toUpperCase()} {courseNumber}
+    <div className="card-container">
+      <div>
+        <p>
+          {courseMajor.toUpperCase()} {courseNumber}
+        </p>
       </div>
-      <div className="header">{courseTitle.toUpperCase()}</div>
-      <div className="info">{courseDescription}</div>
-      <div className="credits">{courseCredits} credits</div>
+      <div className="my-4">
+        <h3>{courseTitle.toUpperCase()}</h3>
+      </div>
+      <div>
+        <p>{courseDescription} </p>
+      </div>
+      {/* <div className="credits">{courseCredits} credits</div> */}
     </div>
   );
 };
@@ -24,6 +31,6 @@ Browsecard.propTypes = {
   courseNumber: PropTypes.string.isRequired,
   courseTitle: PropTypes.string.isRequired,
   courseDescription: PropTypes.string.isRequired,
-  courseCredits: PropTypes.number.isRequired,
+  // courseCredits: PropTypes.number.isRequired,
 };
 export default Browsecard;

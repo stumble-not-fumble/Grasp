@@ -21,6 +21,7 @@ const Browse = () => {
   const toggleProfessor = () => setIsProfessorOpen(!isProfessorOpen);
   const [selectedYear, setSelectedYear] = useState();
   const [selectedProfessor, setSelectedProfessor] = useState();
+
   const handleQuarterChange = (quarter) => {
     setSelectedQuarter(quarter);
   };
@@ -91,13 +92,19 @@ const Browse = () => {
       });
   }, []);
 
+  // Mapping quarter abbreviations to full names
+  const quarterNames = {
+    SPR: "Spring",
+    SUM: "Summer",
+    AUT: "Autumn",
+    WIN: "Winter",
+  };
+
   return (
-    <main className="browse-main">
-      <h1 className="page-title">Courses</h1>
-      <button className="surprise-button">Hidden GEM!</button>
+    <main>
       <div className="browse-container">
         <div className="left-column">
-          <p>
+          <p className="mb-4">
             Select a quarter, year, and professor to view the course&apos;s
             syllabus.
           </p>
@@ -108,15 +115,15 @@ const Browse = () => {
             {isQuarterOpen && (
               <div className="section-content">
                 {["SPR", "SUM", "AUT", "WIN"].map((quarter) => (
-                  <label key={quarter} className="radio-label block mb-2">
+                  <label key={quarter} className="radio-label mb-2">
                     <input
                       type="radio"
                       value={quarter}
                       checked={selectedQuarter === quarter}
                       onChange={() => handleQuarterChange(quarter)}
-                      className="mr-2"
+                      className="w-4 h-4 mr-2"
                     />
-                    {quarter}
+                    {quarterNames[quarter]}
                   </label>
                 ))}
               </div>
@@ -166,19 +173,23 @@ const Browse = () => {
             )}
           </div>
         </div>
-        <section className="courses-section">
-          {courseData &&
-            courseData.map((course, index) => (
-              <Browsecard
-                key={index}
-                courseMajor={course.course_major}
-                courseNumber={course.course_number}
-                courseTitle={course.course_title}
-                courseDescription={course.course_description}
-                courseCredits={course.courseCredits}
-              />
-            ))}
-        </section>
+        <div className="right-column">
+          <h1>Courses</h1>
+          <button className="surprise-button">Hidden GEM!</button>
+          <section className="courses-section">
+            {courseData &&
+              courseData.map((course, index) => (
+                <Browsecard
+                  key={index}
+                  courseMajor={course.course_major}
+                  courseNumber={course.course_number}
+                  courseTitle={course.course_title}
+                  courseDescription={course.course_description}
+                  // courseCredits={course.courseCredits}
+                />
+              ))}
+          </section>
+        </div>
       </div>
     </main>
   );
