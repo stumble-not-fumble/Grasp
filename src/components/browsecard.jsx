@@ -1,36 +1,44 @@
+import { useNavigate } from "react-router-dom";
 import "../css/browse.css";
 import PropTypes from "prop-types";
 
 const Browsecard = ({
-  courseMajor,
-  courseNumber,
-  courseTitle,
-  courseDescription,
-  // courseCredits,
+  course_major,
+  course_number,
+  course_title,
+  course_description,
 }) => {
+  const navigate = useNavigate();
+  const course = {
+    course_major,
+    course_number: Number(course_number),
+    course_title,
+  };
+
+  const handleCardClick = () => {
+    navigate("/course-page", { state: { course } });
+  };
   return (
-    <div className="card-container">
+    <div className="card-container" onClick={handleCardClick}>
       <div>
         <p>
-          {courseMajor.toUpperCase()} {courseNumber}
+          {course_major.toUpperCase()} {course_number}
         </p>
       </div>
       <div className="my-4">
-        <h3>{courseTitle.toUpperCase()}</h3>
+        <h3>{course_title.toUpperCase()}</h3>
       </div>
       <div>
-        <p>{courseDescription} </p>
+        <p>{course_description} </p>
       </div>
-      {/* <div className="credits">{courseCredits} credits</div> */}
     </div>
   );
 };
 
 Browsecard.propTypes = {
-  courseMajor: PropTypes.string.isRequired,
-  courseNumber: PropTypes.string.isRequired,
-  courseTitle: PropTypes.string.isRequired,
-  courseDescription: PropTypes.string.isRequired,
-  // courseCredits: PropTypes.number.isRequired,
+  course_major: PropTypes.string.isRequired,
+  course_number: PropTypes.string.isRequired,
+  course_title: PropTypes.string.isRequired,
+  course_description: PropTypes.string.isRequired,
 };
 export default Browsecard;

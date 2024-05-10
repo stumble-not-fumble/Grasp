@@ -45,18 +45,12 @@ const CoursePage = () => {
     courseData.offered.forEach((offeredItem) => {
       professors.add(offeredItem.professor);
       years.add(offeredItem.year);
-      console.log(selectedYear);
       if (
         selectedProfessor == offeredItem.professor &&
         selectedQuarter == offeredItem.quarter &&
         selectedYear == offeredItem.year
       ) {
-        console.log("here");
         currentCoursePDFKey = offeredItem.pdf;
-        console.log(selectedQuarter);
-        console.log(selectedProfessor);
-        console.log(selectedYear);
-        console.log(currentCoursePDFKey);
       }
     });
     professorOptions = Array.from(professors).map((professor) => {
