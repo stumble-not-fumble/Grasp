@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useLocation } from "react-router-dom";
-import Dropdown from "./dropdown";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
 import { toTitleCase } from "../utils/strings";
 import "../css/course.css";
 import { useEffect, useState } from "react";
@@ -44,12 +45,18 @@ const CoursePage = () => {
     courseData.offered.forEach((offeredItem) => {
       professors.add(offeredItem.professor);
       years.add(offeredItem.year);
+      console.log(selectedYear);
       if (
         selectedProfessor == offeredItem.professor &&
         selectedQuarter == offeredItem.quarter &&
         selectedYear == offeredItem.year
       ) {
+        console.log("here");
         currentCoursePDFKey = offeredItem.pdf;
+        console.log(selectedQuarter);
+        console.log(selectedProfessor);
+        console.log(selectedYear);
+        console.log(currentCoursePDFKey);
       }
     });
     professorOptions = Array.from(professors).map((professor) => {
@@ -129,7 +136,17 @@ const CoursePage = () => {
               </button>
               {isYearOpen && (
                 <div className="section-content">
-                  <Dropdown options={yearOptions} onChange={handleYearChange} />
+                  <Autocomplete
+                    id="year-select"
+                    options={yearOptions || []}
+                    getOptionLabel={(option) => "" + option.value.toString()}
+                    renderInput={(params) => (
+                      <TextField {...params} label="Year" />
+                    )}
+                    onChange={(event, newValue) => {
+                      handleYearChange(newValue.value);
+                    }}
+                  />
                 </div>
               )}
             </div>
@@ -140,9 +157,16 @@ const CoursePage = () => {
               </button>
               {isProfessorOpen && (
                 <div className="section-content">
-                  <Dropdown
-                    options={professorOptions}
-                    onChange={handleProfessorChange}
+                  <Autocomplete
+                    id="professor-select"
+                    options={professorOptions || []}
+                    getOptionLabel={(option) => "" + option.value}
+                    renderInput={(params) => (
+                      <TextField {...params} label="Professor" />
+                    )}
+                    onChange={(event, newValue) => {
+                      handleProfessorChange(newValue.value);
+                    }}
                   />
                 </div>
               )}
