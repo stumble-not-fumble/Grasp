@@ -85,12 +85,20 @@ const CoursePage = () => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
+  // Mapping quarter abbreviations to full names
+  const quarterNames = {
+    SPR: "Spring",
+    SUM: "Summer",
+    AUT: "Autumn",
+    WIN: "Winter",
+  };
+
   return (
     <main>
       <div className="course-container">
         <div className="course-content">
           <div className="left-column">
-            <p>
+            <p className="mb-4">
               Select a quarter, year, and professor to view the course&apos;s
               syllabus.
             </p>
@@ -101,15 +109,15 @@ const CoursePage = () => {
               {isQuarterOpen && (
                 <div className="section-content">
                   {["SPR", "SUM", "AUT", "WIN"].map((quarter) => (
-                    <label key={quarter} className="radio-label block mb-2">
+                    <label key={quarter} className="radio-label mb-2">
                       <input
                         type="radio"
                         value={quarter}
                         checked={selectedQuarter === quarter}
                         onChange={() => handleQuarterChange(quarter)}
-                        className="mr-2"
+                        className="w-4 h-4 mr-2"
                       />
-                      {quarter}
+                      {quarterNames[quarter]}
                     </label>
                   ))}
                 </div>
@@ -143,7 +151,7 @@ const CoursePage = () => {
           <div className="right-column">
             <div>
               <div className="header-container">
-                <h1>{`${course.course_major.toUpperCase()} ${course.course_number} ${toTitleCase(course.course_title)}`}</h1>
+                <h1>{`${course.course_major.toUpperCase()} ${course.course_number}: ${toTitleCase(course.course_title)}`}</h1>
               </div>
             </div>
             <div className="course-summary">

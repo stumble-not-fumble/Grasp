@@ -1,18 +1,3 @@
-/* .header-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  width: 100%;
-} */
-
-/* .header-container h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  text-align: left;
-  padding: 0;
-  margin: 0;
-} */
 
 /* Overall div that wraps both the left sidebar and the content */
 .course-content {
@@ -20,6 +5,24 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+}
+
+/* Left Side Bar */
+.left-column {
+  padding-top: 15px;
+  width: 20%;
+}
+
+.section-header {
+  font-family: Poppins;
+  font-size: 0.9375rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
 }
 
 .select-container label {
@@ -42,18 +45,31 @@
   margin-bottom: 10px; /* Add some space between the inputs */
 }
 
-/* .course-container {
-  font-family: "Arial", sans-serif;
-  max-width: 100%;
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-} */
+/* Option Dropdown */
+.select-selected, .select-items {
+  padding: 0.4rem;
+  width: 100%;
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-purple);
+  font-family: Urbanist;
+  font-size: 0.9375rem;
+}
 
-/* .course-content {
-  padding: 20px;
-} */
+.select-selected {
+  display: flex;
+}
+
+.custom-select, .select-items {
+  margin-bottom: 1.44rem;
+}
+
+.select-items div {
+  margin-bottom: 0.44rem;
+}
+
+svg {
+  transition: all 0.3s;
+}
 
 .course-syllabus {
   padding: 20px;
@@ -121,19 +137,6 @@
   }
 }
 
-.section-header {
-  background: none;
-  border: none;
-  text-align: left;
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .section-header::after {
   content: "▼";
   font-size: 12px;
@@ -142,14 +145,4 @@
 
 .section-header.active::after {
   content: "▲";
-}
-
-.select-container select {
-  padding: 5px;
-  margin-right: 10px;
-}
-
-.left-column {
-  padding-top: 15px;
-  width: 20%;
 }
