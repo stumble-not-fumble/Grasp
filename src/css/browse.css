@@ -22,6 +22,11 @@
   box-shadow: 0 4px 4px rgba(33, 33, 33, 0.15);
   padding: 20px;
   max-width: 19rem;
+  transition: transform 0.3s ease;
+}
+
+.card-container:hover {
+  transform: scale(1.09);
 }
 
 .card-container > div:first-child > p{
@@ -48,3 +53,4 @@
   display: flex;
   justify-content: center;
 }
+
