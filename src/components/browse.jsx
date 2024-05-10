@@ -31,6 +31,7 @@ const Browse = () => {
   const handleProfessorChange = (selectedProfessor) => {
     setSelectedProfessor(selectedProfessor);
   };
+
   useEffect(() => {
     setIsLoading(true);
     fetch(`https://grasp-api.fly.dev/professor`)
@@ -109,9 +110,7 @@ const Browse = () => {
             syllabus.
           </p>
           <div className="expandable-section">
-            <button onClick={toggleQuarter} className="section-header">
-              Quarter*
-            </button>
+            <button className="section-header">Quarter</button>
             {isQuarterOpen && (
               <div className="section-content">
                 {["SPR", "SUM", "AUT", "WIN"].map((quarter) => (
@@ -130,9 +129,7 @@ const Browse = () => {
             )}
           </div>
           <div className="expandable-section">
-            <button onClick={toggleYear} className="section-header">
-              Year*
-            </button>
+            <button className="section-header">Year</button>
             {isYearOpen && (
               <div className="section-content">
                 <Autocomplete
@@ -151,9 +148,7 @@ const Browse = () => {
           </div>
 
           <div className="expandable-section">
-            <button onClick={toggleProfessor} className="section-header">
-              Professor*
-            </button>
+            <button className="section-header">Professor</button>
             {isProfessorOpen && (
               <div className="section-content">
                 <Autocomplete
