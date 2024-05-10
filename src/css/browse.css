@@ -3,17 +3,6 @@
   width: 100%;
 }
 
-.surprise-button {
-  margin-bottom: 1rem;
-  width: 120px;
-  padding: 10px;
-  background-color: var(--color-gold);
-  color: var(--color-white);
-  text-align: center;
-  border-radius: 2rem;
-  font-size: 0.9375rem;
-}
-
 .courses-section {
   /* width: 80%; */
   display: grid;
@@ -40,4 +29,20 @@
 
 .card-container > div:first-child > p{
   background-color: var(--color-light-gold);
+}
+
+.hidden-gem {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.surprise-button {
+  margin-top: 1rem;
+  width: 120px;
+  padding: 10px;
+  background-color: var(--color-gold);
+  color: var(--color-white);
+  text-align: center;
+  border-radius: 2rem;
+  font-size: 0.9375rem;
 }

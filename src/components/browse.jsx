@@ -170,7 +170,6 @@ const Browse = () => {
         </div>
         <div className="right-column">
           <h1>Courses</h1>
-          <button className="surprise-button">Hidden GEM!</button>
           <section className="courses-section">
             {courseData &&
               courseData.map((course, index) => (
@@ -184,6 +183,9 @@ const Browse = () => {
                 />
               ))}
           </section>
+          <div className="hidden-gem">
+            <button className="surprise-button">Hidden GEM!</button>
+          </div>
         </div>
       </div>
     </main>
