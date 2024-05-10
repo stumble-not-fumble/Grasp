@@ -9,7 +9,8 @@ const Browse = () => {
   const [isQuarterOpen, setIsQuarterOpen] = useState(true);
   const [isYearOpen, setIsYearOpen] = useState(true);
   const [isProfessorOpen, setIsProfessorOpen] = useState(true);
-  const [courseData, setCourseData] = useState(null);
+  const [isLevelOpen, setIsLevelOpen] = useState(true);
+  const [courseData, setCourseData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [selectedQuarter, setSelectedQuarter] = useState("");
@@ -19,11 +20,15 @@ const Browse = () => {
   const toggleQuarter = () => setIsQuarterOpen(!isQuarterOpen);
   const toggleYear = () => setIsYearOpen(!isYearOpen);
   const toggleProfessor = () => setIsProfessorOpen(!isProfessorOpen);
+  const toggleLevel = () => setIsLevelOpen(!isLevelOpen);
   const [selectedYear, setSelectedYear] = useState();
   const [selectedProfessor, setSelectedProfessor] = useState();
-
+  const [currentCourseData, setCurrentCourseData] = useState([]);
   const handleQuarterChange = (quarter) => {
     setSelectedQuarter(quarter);
+  };
+  const handleCourseLevelChange = (level) => {
+    setSelectedCourseLevel(level);
   };
   const handleYearChange = (selectedYear) => {
     setSelectedYear(selectedYear);
@@ -82,7 +87,6 @@ const Browse = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         setCourseData(data);
         setIsLoading(false);
       })
@@ -93,12 +97,31 @@ const Browse = () => {
       });
   }, []);
 
-  // Mapping quarter abbreviations to full names
+  const updateCurrentCourseData = () => {
+    const filteredData = courseData.filter((course) => {
+      const courseHundred = Math.floor(Number(course.course_number) / 100);
+      const selectedHundred = Math.floor(Number(selectedCourseLevel) / 100);
+      return courseHundred === selectedHundred;
+    });
+
+    setCurrentCourseData(filteredData);
+  };
+  useEffect(() => {
+    updateCurrentCourseData();
+  }, [selectedCourseLevel]);
+
   const quarterNames = {
     SPR: "Spring",
     SUM: "Summer",
     AUT: "Autumn",
     WIN: "Winter",
+  };
+
+  const courseLevels = {
+    100: "100",
+    200: "200",
+    300: "300",
+    400: "400",
   };
 
   return (
@@ -146,7 +169,6 @@ const Browse = () => {
               </div>
             )}
           </div>
-
           <div className="expandable-section">
             <button className="section-header">Professor</button>
             {isProfessorOpen && (
@@ -167,19 +189,37 @@ const Browse = () => {
               </div>
             )}
           </div>
+          <div className="expandable-section">
+            <button className="section-header">Course Level</button>
+            {isLevelOpen && (
+              <div className="section-content">
+                {["100", "200", "300", "400"].map((level) => (
+                  <label key={level} className="radio-label mb-2">
+                    <input
+                      type="radio"
+                      value={level}
+                      checked={selectedCourseLevel == level}
+                      onChange={() => handleCourseLevelChange(level)}
+                      className="w-4 h-4 mr-2"
+                    />
+                    {courseLevels[level]}
+                  </label>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
         <div className="right-column">
           <h1>Courses</h1>
           <section className="courses-section">
-            {courseData &&
-              courseData.map((course, index) => (
+            {currentCourseData &&
+              currentCourseData.map((course, index) => (
                 <Browsecard
                   key={index}
-                  courseMajor={course.course_major}
-                  courseNumber={course.course_number}
-                  courseTitle={course.course_title}
-                  courseDescription={course.course_description}
-                  // courseCredits={course.courseCredits}
+                  course_major={course.course_major}
+                  course_number={course.course_number}
+                  course_title={course.course_title}
+                  course_description={course.course_description}
                 />
               ))}
           </section>
