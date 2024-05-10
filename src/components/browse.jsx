@@ -212,16 +212,27 @@ const Browse = () => {
         <div className="right-column">
           <h1>Courses</h1>
           <section className="courses-section">
-            {currentCourseData &&
-              currentCourseData.map((course, index) => (
-                <Browsecard
-                  key={index}
-                  course_major={course.course_major}
-                  course_number={course.course_number}
-                  course_title={course.course_title}
-                  course_description={course.course_description}
-                />
-              ))}
+            {selectedCourseLevel == ""
+              ? courseData &&
+                courseData.map((course, index) => (
+                  <Browsecard
+                    key={index}
+                    course_major={course.course_major}
+                    course_number={course.course_number}
+                    course_title={course.course_title}
+                    course_description={course.course_description}
+                  />
+                ))
+              : currentCourseData &&
+                currentCourseData.map((course, index) => (
+                  <Browsecard
+                    key={index}
+                    course_major={course.course_major}
+                    course_number={course.course_number}
+                    course_title={course.course_title}
+                    course_description={course.course_description}
+                  />
+                ))}
           </section>
           <div className="hidden-gem">
             <button className="surprise-button">Hidden GEM!</button>
