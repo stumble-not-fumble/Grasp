@@ -132,6 +132,7 @@ const Browse = () => {
                   />
                 ))}
           </section>
+          <div className="border-b border-gray-200 px-4 py-2"></div>
           <div className="hidden-gem">
             <button className="surprise-button" onClick={selectRandomCourse}>
               Hidden GEM!
