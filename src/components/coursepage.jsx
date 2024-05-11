@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useLocation } from "react-router-dom";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
-import { toTitleCase } from "../utils/strings";
-import "../css/course.css";
 import { useEffect, useState } from "react";
+import { useLocation, Link } from "react-router-dom";
+import "../css/course.css";
+import { toTitleCase } from "../utils/strings";
 
 const CoursePage = () => {
   const location = useLocation();
@@ -190,7 +190,10 @@ const CoursePage = () => {
                     />
                   ) : (
                     <div className="syllabus-placeholder">
-                      <p>No syllabus available</p>
+                      <Link to={"../upload"}>
+                        No syllabus available. Consider helping us out by
+                        uploading a syllabus!
+                      </Link>
                     </div>
                   )}
                 </div>

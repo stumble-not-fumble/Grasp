@@ -89,6 +89,10 @@
   margin-bottom: 20px;
 }
 
+.syllabus-placeholder a {
+  color: var(--color-purple);
+  text-decoration: underline;
+}
 .expandable-section {
   border-top: 1px solid var(--color-gray);
   margin-bottom: 1.44rem;
