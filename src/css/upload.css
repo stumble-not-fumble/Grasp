@@ -63,6 +63,9 @@ input::file-selector-button {
   border: 1px dashed var(--color-purple);
 }
 
+:is(input[autocomplete], .MuiAutocomplete-popper *) {
+  text-transform: capitalize;
+}
 .file_upload a{
   font-family: Urbanist;
   font-size: 0.9375rem;
