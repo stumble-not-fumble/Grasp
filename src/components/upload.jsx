@@ -257,7 +257,7 @@ const Upload = () => {
               Here are instructions to print a web page to pdf.
             </a>
             &nbsp;If your class doesn&apos;t have a syllabus on canvas fill out
-            this form here.
+            this form <a href="https://forms.gle/pHDXVDUpKbezuDXAA">here</a>.
           </p>
           <input
             type="file"
